@@ -1,0 +1,149 @@
+------------------------ VEHICLES TABLE -------------------------------------
+
+select * from vehicles;  
+
+create table VEHICLES
+(
+    VEHICLE_ID NUMBER(3),
+    VEHICLE_TYPE VARCHAR2(30) not null,
+    VEHICLE_BRAND VARCHAR2(30) not null,
+    VEHICLE_MODEL VARCHAR2(30) not null, 
+    SHOWROOM_PRICE NUMBER not null,
+    ONROAD_PRICE NUMBER not null,
+    INTEREST NUMBER(6,2) not null,
+    CONSTRAINT VEHICLE_PK PRIMARY KEY(VEHICLE_ID)
+);  
+
+
+--------------2 Wheelers -------------------------
+
+
+insert into vehicles values(101,'2W','HONDA','ACTIVA 125',73000.5,82000.8,9);
+insert into vehicles values(102,'2W','HONDA','DIO',65000,78000,8);
+insert into vehicles values(103,'2W','HONDA','SHINE',77500,86500,12);
+insert into vehicles values(104,'2W','HONDA','HORNET',132000,153000,11.5);
+insert into vehicles values(105,'2W','HONDA','UNICORN',99000,118000,13); 
+
+insert into vehicles values(106,'2W','TVS','JUPITER',67000,75000,12);
+insert into vehicles values(107,'2W','TVS','ZEST', 64000,74000,15);
+insert into vehicles values(108,'2W','TVS','APACHE RTR 160',111000,129000,13);
+insert into vehicles values(109,'2W','TVS','SPORT',60000,72000,14);
+insert into vehicles values(110,'2W','TVS','VICTOR',72000,83000,12.5);
+
+insert into vehicles values(111,'2W','BAJAJ','CHETAK',100000,115000,13);
+insert into vehicles values(112,'2W','BAJAJ','DOMINAR',210000,233000,7);
+insert into vehicles values(113,'2W','BAJAJ','PULSAR NS 125',99000,115000,9.6);
+insert into vehicles values(114,'2W','BAJAJ','PULSAR NS 200',145000,166000,8.9);
+insert into vehicles values(115,'2W','BAJAJ','AVENGER',110000,132000,10);
+
+insert into vehicles values(116,'2W','KTM','DUKE 200',185000,210000,14);
+insert into vehicles values(117,'2W','KTM','DUKE 390',287000,310000,14.5);
+insert into vehicles values(118,'2W','KTM','RC 125',180000,205000,9);
+insert into vehicles values(119,'2W','KTM','ADVENTURE 250',255000,278000,7);
+insert into vehicles values(120,'2W','KTM','ADVENTURE 390',328000,355000,8.5); 
+
+insert into vehicles values(121,'2W','YAMAHA','RAYZR 125',74000,89000,9); 
+insert into vehicles values(122,'2W','YAMAHA','FASCINO 125',77000,92000,11); 
+insert into vehicles values(123,'2W','YAMAHA','AEROX 155',130000,150000,14); 
+insert into vehicles values(124,'2W','YAMAHA','FZ 25',140000,156000,13.5); 
+insert into vehicles values(125,'2W','YAMAHA','MT-15',150000,186000,11); 
+
+insert into vehicles values(126,'2W','ROYAL ENFIELD','CLASSIC 350',215000,244000,13);
+insert into vehicles values(127,'2W','ROYAL ENFIELD','BULLET 350',140000,168000,11);
+insert into vehicles values(128,'2W','ROYAL ENFIELD','HIMALAYAN',212000,239000,10.7);
+insert into vehicles values(129,'2W','ROYAL ENFIELD','INTERCEPTOR 650',295000,325000,13.4);
+insert into vehicles values(130,'2W','ROYAL ENFIELD','CONTINENTAL GT 650',310000,333000,9);
+
+
+
+---------------------------   3 Wheelers    --------------------------------------------------
+
+
+insert into vehicles values(401,'3W','BAJAJ','MAXIMA C',265000,310000,17);
+
+insert into vehicles values(402,'3W','MAHINDRA','TREO ZOR',377000,410000,12); 
+
+
+insert into vehicles values(403,'3W','PIAGGIO','APE XTRA LDX',270000,10000,14);
+insert into vehicles values(404,'3W','PIAGGIO','APE E XTRA',312000,350000,13.2);
+insert into vehicles values(405,'3W','PIAGGIO','TREO ZOR',379000,415000,18); 
+
+insert into vehicles values(406,'3W','TVS','KING KARGO',230000,277000,11);
+
+
+------------------------------ 4 Wheelers        ------------------------------------------
+
+insert into vehicles values(701,'4W','TATA','NEXON',910000,1112000,11);
+insert into vehicles values(702,'4W','TATA','ALTROZ',650000,811000,13);
+insert into vehicles values(703,'4W','TATA','HARRIER',1650000,1920000,9.5);
+insert into vehicles values(704,'4W','TATA','SAFARI',1555000,1700000,13.5);
+insert into vehicles values(705,'4W','TATA','TIGOR EV',1310000,1499000,15);
+
+insert into vehicles values(706,'4W','VOLKSWAGEN','POLO',670000,810000,8);
+insert into vehicles values(707,'4W','VOLKSWAGEN','POLO GT',920000,1155000,9.5);
+insert into vehicles values(708,'4W','VOLKSWAGEN','TAIGUN',1150000,1340000,11);
+insert into vehicles values(709,'4W','VOLKSWAGEN','VENTO',1052000,1256000,13);
+insert into vehicles values(710,'4W','VOLKSWAGEN','T-ROC',2135000,2345000,15.2); 
+
+insert into vehicles values(711,'4W','HYUNDAI','SANTRO',510000,680000,11.6);
+insert into vehicles values(712,'4W','HYUNDAI','CRETA ',1120000,1355000,15);
+insert into vehicles values(713,'4W','HYUNDAI','I20',750000,950000,13);
+insert into vehicles values(714,'4W','HYUNDAI','VERNA',1050000,1210000,12);
+insert into vehicles values(715,'4W','HYUNDAI','ALCAZAR',1750000,2001000,15.5);
+
+insert into vehicles values(716,'4W','TOYOTO','FORTUNER',3040000,3440000,18.5);
+insert into vehicles values(717,'4W','TOYOTO','INNOVA',1723000,1950000,13.2);
+insert into vehicles values(718,'4W','TOYOTO','CAMRY',4150000,4433000,10.5);
+insert into vehicles values(719,'4W','TOYOTO','GLANZA',745000,930000,11);
+insert into vehicles values(720,'4W','TOYOTO','YARIS',1050000,1250000,9);
+
+insert into vehicles values(721,'4W','MERCEDES-BENZ','A-CLASS',4450000,5134000,9.6);
+insert into vehicles values(722,'4W','MERCEDES-BENZ','E-CLASS',6950000,8110000,12);
+insert into vehicles values(723,'4W','MERCEDES-BENZ','CLS',8650000,10511000,16);
+insert into vehicles values(724,'4W','MERCEDES-BENZ','V-CLASS',7269000,9778000,12.5);
+insert into vehicles values(725,'4W','MERCEDES-BENZ','S-CLASS',21757000,24550000,19);
+
+insert into vehicles values(726,'4W','FORD','ENDEAVOUR',3430000,3650000,15);
+insert into vehicles values(727,'4W','FORD','ECOSPORT',950000,1155000,13);
+insert into vehicles values(728,'4W','FORD','FIGO',592000,729000,16.5);
+insert into vehicles values(729,'4W','FORD','FREESTYLE',820000,1021000,10);
+insert into vehicles values(730,'4W','FORD','ASPIRE',731000,870000,12);
+
+insert into vehicles values(731,'4W','AUDI','A4',4590000,4770000,17);
+insert into vehicles values(732,'4W','AUDI','A6',5858000,7156000,11.5);
+insert into vehicles values(733,'4W','AUDI','A8',15932000,18934000,14);
+insert into vehicles values(734,'4W','AUDI','Q2',3579000,3854000,14.6);
+insert into vehicles values(735,'4W','AUDI','Q8',20850000,22105000,19.5);
+
+insert into vehicles values(736,'4W','BMW','3 SERIES',5350000,7121000,9.5);
+insert into vehicles values(737,'4W','BMW','5 SERIES',6756000,8129000,13.8);
+insert into vehicles values(738,'4W','BMW','7 SERIES',14750000,17957000,16.7);
+insert into vehicles values(739,'4W','BMW','M2',8550000,10550000,10);
+insert into vehicles values(740,'4W','BMW','M5',16256000,19125000,13);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
