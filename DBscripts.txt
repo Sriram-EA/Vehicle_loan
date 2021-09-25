@@ -1,4 +1,5 @@
------------------------- VEHICLES TABLE -------------------------------------
+------------------------ VEHICLES TABLE ------------------------------------- 
+------------------------ Sriram ------------------------------------------
 
 select * from vehicles;  
 
@@ -121,25 +122,159 @@ insert into vehicles values(738,'4W','BMW','7 SERIES',14750000,17957000,16.7);
 insert into vehicles values(739,'4W','BMW','M2',8550000,10550000,10);
 insert into vehicles values(740,'4W','BMW','M5',16256000,19125000,13);
 
+----------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------- Sonali --------------------------------
+
+create table USER_REGISTRATIONS
+(
+    USER_ID NUMBER(4),
+    FIRSTNAME VARCHAR2(100) not null,
+    LASTNAME VARCHAR2(100) not null,
+    EMAIL_ID VARCHAR2(100) not null, 
+    PASSWORD VARCHAR2(100) not null,
+    USER_ADMIN NUMBER(1) not null,
+    CONSTRAINT PK_USER_REGISTRATIONS PRIMARY KEY(USER_ID),
+    CONSTRAINT UQ_USER_REGISTRATIONS_EMAIL UNIQUE(EMAIL_ID)
+);
+
+create table EMPLOYMENTS
+(
+    EMPLOYMENT_ID NUMBER(5),
+    EMPLOYMENT_TYPE VARCHAR2(30) not null,
+    ANNUAL_SALARY NUMBER(12,2) not null,
+    USER_ID NUMBER(4) not null,
+    CONSTRAINT PK_EMPLOYMENTS PRIMARY KEY(EMPLOYMENT_ID)
+);   
+
+
+alter table EMPLOYMENTS
+add CONSTRAINT FK_EMPLOYMENTS_USER_ID FOREIGN KEY(USER_ID) REFERENCES USER_REGISTRATIONS(USER_ID) ON DELETE CASCADE;
+
+CREATE SEQUENCE USER_REGISTRATIONS_SEQUENCE INCREMENT BY 1 START WITH 1001;
+
+CREATE SEQUENCE EMPLOYMENTS_SEQUENCE INCREMENT BY 1 START WITH 10001;
+
+
+
+-----------------INSERT DATA -----------------------------------
+
+insert into user_registrations values(1000,'JAY','SHAH','jay.shah@gmail.com','jayshah123',0);
+
+insert into user_registrations values(USER_SEQ.nextval,'Sonali','Sahoo','sonali710@gmail.com','son123',0);
+
+insert into user_registrations values(USER_SEQ.nextval,'Steve','Smith','steve-smith@gmail.com','abcd123',0);
+
+insert into user_registrations values(USER_SEQ.nextval,'Pranav','Kumar','pranavK@gmail.com','kumarpranav',1);
+
+insert into user_registrations values(USER_SEQ.nextval,'Adesh','Mishra','ARM@rediffmail.com','illuminati',0);
+
+insert into user_registrations values(USER_SEQ.nextval,'Yash','Aggarwal','yash393@live.com','aggaryash654',1);
+
+
+
+-----------------INSERT DATA-----------------------------------
+
+insert into EMPLOYMENTS values(10001,'Government',700000,1001);
+insert into EMPLOYMENTS values(10002,'Public sector',55000,1002);
+insert into EMPLOYMENTS values(10003,'Private',90000,1003);
+insert into EMPLOYMENTS values(10004,'Freelance',20000,1004);
+insert into EMPLOYMENTS values(10005,'Self-employed',45000,1005);
+insert into EMPLOYMENTS values(EMPLOYMENTS_SEQUENCE.NEXTVAL,'Government',700000,1001); 
+
+------------------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------  SANKETH ----------------------------------
+
+CREATE TABLE BANK_DETAILS
+(
+BANK_ID NUMBER(6),
+ACCOUNT_NUMBER NUMBER(16) NOT NULL,
+IFSC_CODE VARCHAR2(11) NOT NULL,
+BANK_BRANCH VARCHAR2(100) NOT NULL,
+ACCOUNT_TYPE VARCHAR2(20) NOT NULL,
+USER_ID NUMBER(4),
+CONSTRAINT PK_BANK_DETAILS PRIMARY KEY(BANK_ID),
+CONSTRAINT FK_BANK_DETAILS_USER_ID FOREIGN KEY(USER_ID) REFERENCES USER_REGISTRATIONS(USER_ID) ON DELETE CASCADE
+);
+
+
+----------------------------------------
+
+CREATE TABLE EMI_DETAILS
+(
+EMI_ID NUMBER(7),
+PRINCIPLE NUMBER(10) NOT NULL,
+TENURE NUMBER(5) NOT NULL,
+EMI NUMBER(7) NOT NULL,
+EMI_STARTDATE DATE NOT NULL,
+EMI_ENDDATE DATE NOT NULL,
+USER_ID NUMBER(4),
+VEHICLE_ID NUMBER(3),
+EMPLOYMENT_ID NUMBER(5),
+CONSTRAINT PK_EMI_DETAILS PRIMARY KEY(EMI_ID),
+CONSTRAINT FK_EMI_DETAILS_USER_ID FOREIGN KEY (USER_ID) REFERENCES  USER_REGISTRATIONS(USER_ID) ON DELETE CASCADE,
+CONSTRAINT FK_EMI_DETAILS_VEHICLE_ID FOREIGN KEY (VEHICLE_ID) REFERENCES VEHICLES(VEHICLE_ID) ON DELETE CASCADE,
+CONSTRAINT FK_EMI_DETAILS_EMPLOYMENT_ID FOREIGN KEY (EMPLOYMENT_ID) REFERENCES EMPLOYMENTS(EMPLOYMENT_ID) ON DELETE CASCADE
+); 
+
+
+---------------------------------------
+
+CREATE SEQUENCE BANK_DETAILS_SEQUENCE START WITH 100001 INCREMENT BY 1;
+
+
+CREATE SEQUENCE EMI_DETAILS_SEQUENCE START WITH 1000001 INCREMENT BY 1;
+
+------------------------------
 
 
 
 
+INSERT INTO EMI_DETAILS VALUES(EMI_DETAILS_SEQUENCE.NEXTVAL,10000,12,1200,'09/25/2021','09/25/2022',1001,101,10001); 
+
+
+-------------------------------------------------------------------------------
 
 
 
+INSERT INTO BANK_DETAILS VALUES(BANK_DETAILS_SEQUENCE.NEXTVAL,1232412,'HDFC1234','CHENNAI','SAVINGS',1001);
 
 
 
+--------------------------------------------------------- 
+
+------------------------------ Rishi ---------------------------------
+
+CREATE SEQUENCE APPLICATION_FORMS_SEQUENCE START WITH  10000001 INCREMENT BY 1;
 
 
-
-
-
-
-
-
-
+CREATE TABLE APPLICATION_FORMS
+(
+  APPLICATION_ID NUMBER(8),
+  AGE NUMBER(3) NOT NULL,
+  GENDER VARCHAR2(15) NOT NULL,
+  MOBILE_NO VARCHAR2(15) NOT NULL,
+  ADDRESS VARCHAR2(50) NOT NULL ,
+  CITY VARCHAR2(30) NOT NULL ,
+  STATE VARCHAR2(30) NOT NULL,
+  PINCODE VARCHAR2(10) NOT NULL ,
+  STATUS VARCHAR2(15) DEFAULT 'NOT APPROVED',
+  APPROVAL_DATE DATE,
+  ADMIN_ID NUMBER(4), 
+  USER_ID NUMBER(4),
+  VEHICLE_ID NUMBER(3),
+  EMI_ID NUMBER(7),
+  EMPLOYMENT_ID NUMBER(5),
+  BANK_ID NUMBER(6),
+  CONSTRAINT PK_APPLICATION_FORMS PRIMARY KEY(APPLICATION_ID),
+  CONSTRAINT FK_APPLICATION_USER_ID FOREIGN KEY(USER_ID) REFERENCES USER_REGISTRATIONS(USER_ID) ON DELETE CASCADE,
+  CONSTRAINT FK_APPLICATION_VHCL_ID FOREIGN KEY(VEHICLE_ID) REFERENCES VEHICLES(VEHICLE_ID) ON DELETE CASCADE,
+  CONSTRAINT FK_APPLICATION_EMI_ID FOREIGN KEY(EMI_ID) REFERENCES EMI_DETAILS(EMI_ID) ON DELETE CASCADE,
+  CONSTRAINT FK_APPLICATION_EMP_ID FOREIGN KEY(EMPLOYMENT_ID) REFERENCES EMPLOYMENTS(EMPLOYMENT_ID) ON DELETE CASCADE,
+  CONSTRAINT FK_APPLICATION_BANK_ID FOREIGN KEY(BANK_ID) REFERENCES BANK_DETAILS(BANK_ID) ON DELETE CASCADE
+); 
 
 
 
