@@ -42,6 +42,15 @@ public class Employment {
 		this.userRegistration = userRegistration;
 	}
 
+	
+	public int getEmploymentId() {
+		return employmentId;
+	}
+
+	public void setEmploymentId(int employmentId) {
+		this.employmentId = employmentId;
+	}
+
 	public String getEmploymentType() {
 		return employmentType;
 	}

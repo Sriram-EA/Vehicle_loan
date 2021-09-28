@@ -25,4 +25,11 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao{
 		return userRegistrationList;
 	}
 
+	@Override
+	public UserRegistration getUserById(int userId) {
+		
+		UserRegistration userDetail=em.find(UserRegistration.class,userId);
+		return userDetail;
+	}
+
 }

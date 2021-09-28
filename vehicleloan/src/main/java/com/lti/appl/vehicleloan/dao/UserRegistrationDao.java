@@ -6,6 +6,7 @@ import com.lti.appl.vehicleloan.beans.UserRegistration;
 
 public interface UserRegistrationDao { 
 	
-	public abstract List<UserRegistration> getAllUserRegistrations();
+	public abstract List<UserRegistration> getAllUserRegistrations(); 
+	public abstract UserRegistration getUserById(int userId);
 
 }

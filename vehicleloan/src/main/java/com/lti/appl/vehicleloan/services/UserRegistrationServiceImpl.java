@@ -41,4 +41,12 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		return userRegistrationList;
 	}
 
+
+	@Override
+	public UserRegistration getUserById(int userId) {
+		
+		UserRegistration userDetail=userRegistrationDao.getUserById(userId);
+		return userDetail;
+	}
+
 }

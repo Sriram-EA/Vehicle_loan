@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,10 +24,18 @@ public class UserRegistrationController {
 	//http://localhost:8090/userregistration/allusers
 	
 	@GetMapping("/allusers")
-	private List<UserRegistration> getAllUserRegistrations()
+	public List<UserRegistration> getAllUserRegistrations()
 	{  
 		List<UserRegistration> userRegistrationList=userRegistrationService.getAllUserRegistrations();	 
 		return userRegistrationList;
+	} 
+	
+	//http://localhost:8090/userregistration/userbyid/1001
+	@GetMapping("/userbyid/{id}")
+	public UserRegistration getUserById(@PathVariable(value="id") int userId)
+	{
+		UserRegistration userDetail=userRegistrationService.getUserById(userId);
+		return userDetail;
 	}
 	
 
