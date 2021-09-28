@@ -1,4 +1,4 @@
-package com.lti.appl.beans;
+package com.lti.appl.vehicleloan.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -100,11 +100,6 @@ public class UserRegistration {
 		return "UserRegistration [userID=" + userID + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", emailId=" + emailId + ", password=" + password + ", userAdminStatus=" + userAdminStatus + "]";
 	}
-	
-	
-	
-	
-	
 	
 
 }

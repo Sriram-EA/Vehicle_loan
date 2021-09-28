@@ -1,4 +1,4 @@
-package com.lti.SpringDemo7_Practice;
+package com.lti.appl.controller;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

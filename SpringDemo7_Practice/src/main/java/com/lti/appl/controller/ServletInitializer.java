@@ -1,4 +1,4 @@
-package com.lti.SpringDemo7_Practice;
+package com.lti.appl.controller;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
