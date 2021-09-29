@@ -49,4 +49,20 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		return userDetail;
 	}
 
+
+	@Override 
+	public String checkEmail(UserRegistration userRegistration) {
+		
+		String emailMsg=userRegistrationDao.checkEmail(userRegistration); 
+		if(emailMsg.equals("No Email Exists"))
+		{
+			String msg=userRegistrationDao.createUser(userRegistration); 
+			return msg;
+		} 
+		else 
+		{
+			return "Email Already Exists, Use a new Email ID";
+		}
+	}
+
 }
