@@ -40,13 +40,29 @@ public class UserRegistrationController {
 		return userDetail;
 	} 
 	
-	//http://localhost:8090/userregistration/addusers
-	@PostMapping("/addusers")
-	public String createUser(@RequestBody UserRegistration userRegistration)
+	//http://localhost:8090/userregistration/checkemail
+	@PostMapping(value="/checkemail",consumes="application/json")
+	public String checkEmail(@RequestBody UserRegistration userRegistration)
 	{
-		String createUserMsg=userRegistrationService.checkEmail(userRegistration);
-		return createUserMsg;
+		String checkEmailMessage=userRegistrationService.checkEmail(userRegistration);
+		return checkEmailMessage;
+	}  
+	//http://localhost:8090/userregistration/register
+	@PostMapping(value="/register",consumes="application/json")
+	public String registerUser(@RequestBody UserRegistration userRegistration)
+	{
+		String userRegisterMessage=userRegistrationService.createUser(userRegistration); 
+		System.out.println(userRegisterMessage);
+		return userRegisterMessage;
 	}
+	
+//	//http://localhost:8090/userregistration/addDetails
+//	@PostMapping("/adduser")
+//	public void addPersonalDetails(@RequestBody UserRegistration e) 
+//	{
+//		System.out.println("insde cotroller "+e);
+//		userRegistrationService.createUser(e);
+//	}
 	
 
 }

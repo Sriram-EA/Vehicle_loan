@@ -62,7 +62,7 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao{
 	@Transactional
 	public String createUser(UserRegistration userRegistration) {
 	
-		em.persist(userRegistration);
+		em.persist(userRegistration); 
 		return "New User Added";
 	}
 

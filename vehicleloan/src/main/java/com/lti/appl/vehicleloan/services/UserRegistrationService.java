@@ -8,5 +8,6 @@ public interface UserRegistrationService {
 
 	public abstract List<UserRegistration> getAllUserRegistrations(); 
 	public abstract UserRegistration getUserById(int userId); 
-	public abstract String checkEmail(UserRegistration userRegistration);
+	public abstract String checkEmail(UserRegistration userRegistration); 
+	public abstract String createUser(UserRegistration userRegistration);
 }
