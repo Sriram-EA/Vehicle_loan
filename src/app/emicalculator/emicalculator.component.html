@@ -1,0 +1,34 @@
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>EMI Calculation</h3>
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" ngNativeValidate>    
+                <div  class="form-group">
+                    <label>Enter the Loan Amount</label> 
+                </div> 
+                <div  class="form-group">
+                    <input type="number" formControlName="var_principle"   required>
+                </div>  
+                <div  class="form-group">
+                    <label>Enter the Interest Rate</label> 
+                </div> 
+                <div  class="form-group">
+                    <input type="number" formControlName="var_interest" required>
+                </div> 
+                <div  class="form-group"> 
+                    <label>Enter Tenure in months</label> 
+                </div> 
+                <div  class="form-group">
+                    <input type="number" formControlName="var_tenure"required>
+                </div>  
+                <div  class="form-group">
+                    <button type="submit" class="btnSubmit">Submit</button>
+                </div>  
+                <div> 
+                    <h4 *ngIf="display">Evaluated Emi: {{vemi | number:'1.0-0'}}</h4>
+                </div>
+            </form> 
+        </div> 
+                
+    </div>
+</div>
