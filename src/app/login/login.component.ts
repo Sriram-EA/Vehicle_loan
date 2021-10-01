@@ -56,8 +56,16 @@ export class LoginComponent implements OnInit {
         { 
           userID=allUserList[i].userID; 
           userAdminStatus=allUserList[i].userAdminStatus;   
-          localStorage.setItem("userID",userID.toString());										
-            this.router.navigate(['home']);
+          localStorage.setItem("userID",userID.toString());		 
+          localStorage.setItem("userAdminStatus",userAdminStatus.toString()); 
+          if(userAdminStatus==0)
+          {								
+            this.router.navigate(['user-dashboard']);
+          }
+          else 
+          {
+            this.router.navigate(['admin-dashboard']);
+          }
           this.display=false;
         } 
         else 

@@ -6,6 +6,4 @@ export class UserRegistration
     emailId:string;
     password :string;
     userAdminStatus:number; 
-
-
 }

@@ -1,0 +1,24 @@
+<p>applid-list works!</p>
+
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Application Id</th>
+                <th>Status</th> 
+                 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- <td> {{value}} </td> -->
+            </tr>
+              <tr  *ngFor = "let a of applobj;">              
+                <td> {{a.applicationId}} </td>
+                <td> {{a.status}} </td>
+                <td> <a [routerLink]="['/report', a.applicationId]" class="btn btn-primary active" role="button" routerLinkActive="active">View Application</a> </td>       
+                
+            </tr> 
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,42 @@
+<p>report works!</p>
+
+
+<div class="container">
+    <div style="overflow-x:auto;">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>LastName</th>   
+                <th>Employment Type</th> 
+                <th>Annual Salary</th>
+                <th>Vehicle Type</th> 
+                <th>Vehicle Brand</th>
+                <th>Vehicle Model</th> 
+                <th>EMI Opted</th>
+                <th>Account Type</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td> {{value}} </td>
+            </tr> -->
+              <tr>              
+                <td> {{report.firstName}} </td>
+                <td> {{report.lastName}} </td>
+                <td> {{report.employmentType}} </td>
+                <td> {{report.annualSalary}} </td>
+                <td> {{report.vehicleType}} </td>       
+                <td> {{report.vehicleBrand}} </td>    
+                <td> {{report.vehicleModel}} </td>  
+                <td> {{report.emi}} </td>                
+                <td> {{report.accountType}} </td> 
+            </tr> 
+        </tbody>
+    </table>
+</div> 
+<div class="text-center" >
+<button (click)="approve()" type="submit" class="btn btn-success"  style="background-color:cornflowerblue; color:white">Approve</button> &nbsp; &nbsp;
+<button (click)="reject()" type="submit" class="btn btn-danger" style="background-color:tomato; color:black">Reject</button>
+</div>
+</div>

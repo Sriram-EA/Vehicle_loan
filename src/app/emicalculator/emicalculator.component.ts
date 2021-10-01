@@ -9,14 +9,14 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class EmicalculatorComponent implements OnInit {
 
   myForm:FormGroup;
-  vprinciple:number;
-  vinterest:number;
-  vtenure:number; 
+  principle:number;
+  interest:number;
+  tenure:number; 
   vemi:number; 
-  vfirst:number;
-  vsecond:number;
-  vthird:number; 
-  vrate:number; 
+  first:number;
+  second:number;
+  third:number; 
+  rate:number; 
   display:boolean=false;
   
   constructor(fb:FormBuilder) 
@@ -31,14 +31,14 @@ export class EmicalculatorComponent implements OnInit {
 
    onSubmit(value:string):void 
    {
-     this.vprinciple=this.myForm.value.var_principle;
-     this.vinterest=this.myForm.value.var_interest;
-     this.vtenure=this.myForm.value.var_tenure;  
-     this.vrate=this.vinterest/1200;  
-     this.vfirst=this.vprinciple*this.vrate;
-     this.vsecond=Math.pow((1+this.vrate),this.vtenure);
-     this.vthird=Math.pow((1+this.vrate),this.vtenure)-1; 
-     this.vemi=((this.vfirst*this.vsecond)/(this.vthird)); 
+     this.principle=this.myForm.value.var_principle;
+     this.interest=this.myForm.value.var_interest;
+     this.tenure=this.myForm.value.var_tenure;  
+     this.rate=this.interest/1200;  
+     this.first=this.principle*this.rate;
+     this.second=Math.pow((1+this.rate),this.tenure);
+     this.third=Math.pow((1+this.rate),this.tenure)-1; 
+     this.vemi=((this.first*this.second)/(this.third)); 
      this.display=true;
    }    
 

@@ -137,7 +137,9 @@
 <br /><br />
 <div class="col-md-6 col-md-offset-2">
       <h2 class="signup">Sign Up</h2> 
-      <br />
+      <br /> 
+      <h6 *ngIf="emailDisplay" class="center"> Email Already Exists </h6> 
+      <h6 *ngIf="registrationDisplay" class="center">Registered Successfully</h6>
       <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
         <div class="center"> 
             <div class="form-group">
@@ -163,7 +165,7 @@
 
             <div class="form-group">
                   <label for="email">Email address:</label>
-                  <input type="email" formControlName="emailId" placeholder="Email" name="emailId" class="form-control rounded" id="emailId">
+                  <input type="email" formControlName="emailId" placeholder="Email" name="emailId" class="form-control rounded" id="emailId" >
                   <div *ngIf="submitted && addForm.controls.emailId.errors" class="error">
                           <h6 class="text-danger">Email is required</h6>
                    </div>
@@ -171,7 +173,7 @@
 
         <div class="form-group">
                   <label for="password">Password :</label>
-                  <input type="email" formControlName="password" placeholder="password" name="password" class="form-control rounded" id="password">
+                  <input type="password" formControlName="password" placeholder="password" name="password" class="form-control rounded" id="password">
                   <div *ngIf="submitted && addForm.controls.password.errors" class="error">
                           <h6 class="text-danger">Password is required
                 </h6>

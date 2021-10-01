@@ -1,0 +1,11 @@
+<h1>User DashBoard</h1> 
+<div class="sidebar">
+<a  [routerLink]= "['/addemp']">Add your Employment Details </a><br>
+<a class="appstatus" [routerLink]= "['/status']">Application Status </a><br>
+<a  [routerLink]= "['/addbank']">Add Bank Details </a><br> 
+<a class="bankdetails" [routerLink]="['/updatebank']">Update Bank Details </a><br>
+</div>
+
+<div class="content">
+    <router-outlet></router-outlet> 
+</div>

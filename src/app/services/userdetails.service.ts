@@ -19,8 +19,14 @@ export class UserdetailsService {
   public getUserById(userID: number) {
     return this.http.get<UserRegistration>(this.baseUrl + '/userbyid/' + userID);
   }
+ 
+  public checkEmailExists(emailRegisterCheck:string)
+  {  
+    console.log("I am inside check email exists service")
+    console.log(this.http.post<any>(this.baseUrl+'/checkemail/',emailRegisterCheck));
+    return this.http.post<any>(this.baseUrl+'/checkemail/',emailRegisterCheck); 
 
-
+  }
   public createUser(user: UserRegistration) {
     console.log("inside create user" + user);
     return this.http.post(this.baseUrl + '/register', user);

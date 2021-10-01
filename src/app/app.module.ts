@@ -9,6 +9,15 @@ import { EmicalculatorComponent } from './emicalculator/emicalculator.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserregistrationComponent } from './userregistration/userregistration.component';
 import { LoginComponent } from './login/login.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UpdateBankComponent } from './update-bank/update-bank.component';
+import { UpdateEmploymentComponent } from './update-employment/update-employment.component';
+import { AddEmploymentComponent } from './add-employment/add-employment.component';
+import { StatusComponent } from './status/status.component';
+import { AddBankComponent } from './add-bank/add-bank.component';
+import { ApplidListComponent } from './admin-dashboard/applid-list/applid-list.component';
+import { ReportComponent } from './admin-dashboard/report/report.component';
 
 
 @NgModule({
@@ -18,7 +27,16 @@ import { LoginComponent } from './login/login.component';
     AboutusComponent,
     EmicalculatorComponent,
     UserregistrationComponent,
-    LoginComponent
+    LoginComponent,
+    UserDashboardComponent,
+    AdminDashboardComponent,
+    UpdateBankComponent,
+    UpdateEmploymentComponent,
+    AddEmploymentComponent,
+    StatusComponent,
+    AddBankComponent,
+    ApplidListComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

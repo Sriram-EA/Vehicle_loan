@@ -1,0 +1,55 @@
+<h1>User DashBoard</h1>
+<div class="sidebar">
+    <a [routerLink]="['/addemp']">Add/update your Employment Details </a><br>
+    <a class="appstatus" [routerLink]="['/status']">Application Status </a><br>
+    <a  [routerLink]= "['/addbank']">Add Bank Details </a><br> 
+    <a class="bankdetails" [routerLink]="['/updatebank']">Update Bank Details </a><br>
+</div>
+
+<div class="card border-primary mb-3" style="max-width: 55rem; ">
+
+
+    <div class="card-body text-primary">
+        <h5 class="card-title">Bank Details</h5>
+        <hr>
+        <form [formGroup]="updatebankForm" (ngSubmit)="onSubmit(updatebankForm.value)">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Account Number</label>
+                <div class="col-sm-10">
+                    <input class="form-control" placeholder="Account Number" formControlName="accountNumber"
+                        value={{accountNumber}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">IFSC Code</label>
+                <div class="col-sm-10">
+                    <input class="form-control" placeholder="IFSC Code" formControlName="ifscCode" value={{ifscCode}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Bank Branch</label>
+                <div class="col-sm-10">
+                    <input class="form-control" placeholder="Bank Branch" formControlName="bankBranch"
+                        value={{bankBranch}}>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Account Type</label>
+
+                <div class="col-sm-10"> <select class="form-control" placeholder="Account Type"
+                        formControlName="accountType">
+                        <option value="" disabled>Choose your Account Type</option>
+                        <option value="SALARIED">SALARIED</option>
+                        <option value="GOVERNMENT SERVICE">GOVERNMENT SERVICE</option>
+                        <option value="ENTREPRENEURSHIP">ENTREPRENEURSHIP</option>
+
+
+                    </select></div>
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Submit" style="float: right;width:100px;">
+
+        </form>
+
+    </div>
+</div>

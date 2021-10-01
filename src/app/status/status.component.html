@@ -1,0 +1,21 @@
+<h1>User DashBoard</h1> 
+<div class="sidebar">
+<a  [routerLink]= "['/addemp']">Add/update your Employment Details </a><br>
+<a class="appstatus" [routerLink]= "['/status']">Application Status </a><br>
+<a  [routerLink]= "['/addbank']">Add Bank Details </a><br> 
+<a class="bankdetails" [routerLink]="['/updatebank']">Update Bank Details </a><br>
+</div>
+
+<table class="center"> 
+    <thead>
+        <tr><th>Application ID</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let e of empstatus;">
+            <td>{{e.applicationId}}</td>
+            <td>{{e.status}}</td>
+          
+        </tr>
+       
+    </tbody>
+</table>
