@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lti.appl.vehicleloan.beans.EmailStatus;
 import com.lti.appl.vehicleloan.beans.UserRegistration;
 import com.lti.appl.vehicleloan.dao.UserRegistrationDao;
 
@@ -51,9 +52,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
 
 	@Override 
-	public String checkEmail(UserRegistration userRegistration) {
+	public EmailStatus checkEmail(String email) {
 		
-		String emailMsg=userRegistrationDao.checkEmail(userRegistration); 
+		EmailStatus emailMsg=userRegistrationDao.checkEmail(email); 
 		return emailMsg;
 
 	}

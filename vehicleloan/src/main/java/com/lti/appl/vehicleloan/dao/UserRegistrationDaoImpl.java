@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.lti.appl.vehicleloan.beans.EmailStatus;
 import com.lti.appl.vehicleloan.beans.UserRegistration;
 
 @Repository
@@ -34,7 +35,7 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao{
 	}
 
 	@Override
-	public String checkEmail(UserRegistration userRegistration) {
+	public EmailStatus checkEmail(String email) {
 		
 		String str="select u from UserRegistration u"; 
 		Query qry=em.createQuery(str);
@@ -42,19 +43,23 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao{
 		int emailFlag=0;        // Initially no Record in database;
 		for(UserRegistration userRegisterList:userList)
 		{ 
-			if(userRegistration.getEmailId().equals(userRegisterList.getEmailId()))
+			if(email.equals(userRegisterList.getEmailId()))
 			{
 				emailFlag=1; 
 				break;
 			}
-		}
-        if(emailFlag==0)
-        {
-        	return "No Email Exists";
+		} 
+		EmailStatus status=new EmailStatus(); 
+		
+		if(emailFlag==0)
+        {  
+			 status.setEmailStatus("No Email Exists");
+			 return status;
         } 
         else 
-        {
-        	return "Email already Exists";
+        { 
+        	status.setEmailStatus("Email already Exists");
+			 return status;
         }
 	}
 

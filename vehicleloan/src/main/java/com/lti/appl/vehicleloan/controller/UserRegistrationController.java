@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.appl.vehicleloan.beans.EmailStatus;
 import com.lti.appl.vehicleloan.beans.UserRegistration;
 import com.lti.appl.vehicleloan.services.UserRegistrationServiceImpl;
 
@@ -41,12 +42,15 @@ public class UserRegistrationController {
 	} 
 	
 	//http://localhost:8090/userregistration/checkemail
-	@PostMapping(value="/checkemail",consumes="application/json")
-	public String checkEmail(@RequestBody UserRegistration userRegistration)
-	{
-		String checkEmailMessage=userRegistrationService.checkEmail(userRegistration);
+	@PostMapping(value="/checkemail/{email}",consumes="application/json")
+	public EmailStatus checkEmail(@PathVariable(value="email") String email)
+	{ 
+		System.out.println("My favorite person is sanketh");
+		EmailStatus checkEmailMessage=userRegistrationService.checkEmail(email); 
+		System.out.println(checkEmailMessage);
 		return checkEmailMessage;
 	}  
+	
 	//http://localhost:8090/userregistration/register
 	@PostMapping(value="/register",consumes="application/json")
 	public String registerUser(@RequestBody UserRegistration userRegistration)

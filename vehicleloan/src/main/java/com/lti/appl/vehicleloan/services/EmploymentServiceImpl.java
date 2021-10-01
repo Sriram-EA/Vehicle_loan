@@ -49,4 +49,21 @@ public class EmploymentServiceImpl implements EmploymentService {
 		return employmentDetail;
 	}
 
+
+	@Override
+	public String saveEmployment(Employment e, int userId) {
+	String msg =  employmentDao.saveEmployment(e, userId);
+		return msg;
+	}
+
+
+	
+
+
+	@Override
+	public String updateEmployment(Employment e, int userId) {
+		String msg =  employmentDao.updateEmployment(e, userId);
+		return msg;
+	}
+
 }
