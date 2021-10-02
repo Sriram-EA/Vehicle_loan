@@ -20,6 +20,11 @@ public class EmailStatus {
 		super();
 		this.emailStatus = emailStatus;
 	}
+
+	@Override
+	public String toString() {
+		return "EmailStatus [emailStatus=" + emailStatus + "]";
+	}
 	
 	
 

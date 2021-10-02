@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.appl.vehicleloan.beans.EmiDetail;
+import com.lti.appl.vehicleloan.beans.Status;
 import com.lti.appl.vehicleloan.services.EmiDetailServiceImpl;
 
 
@@ -37,6 +38,16 @@ public class EmiDetailController {
 		return emiDetailService.getEmiById(emiId);
 	}
 	
-	//http://localhost:8090/emi/emilist
+	//http://localhost:8090/emi/emilist 
+	@GetMapping("/emibyUserId/{userId}")
+	public Status getEmiByUserId(@PathVariable(value="userId") int userId)
+	{
+		
+		int emi=emiDetailService.getEmiByUserId(userId);
+		String str=""+emi;
+		Status existingEmi=new Status(str);
+		return existingEmi;
+		
+	}
 
 }

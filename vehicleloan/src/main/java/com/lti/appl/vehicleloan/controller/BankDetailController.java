@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.appl.vehicleloan.beans.AccountType;
 import com.lti.appl.vehicleloan.beans.BankDetail;
+import com.lti.appl.vehicleloan.beans.Employment;
 import com.lti.appl.vehicleloan.services.BankDetailService;
 import com.lti.appl.vehicleloan.services.BankDetailServiceImpl;
 @CrossOrigin(origins="*")
@@ -53,10 +54,13 @@ public class BankDetailController {
 	  public String addBank(@RequestBody BankDetail bank, @PathVariable(value="id")int userId) 
 	 {
 	   return bankDetailService.addBank(bank,userId);		
-	 }
-	
-
-	
-	
+	 } 
+	  
+	  @GetMapping("/bankbyuserid/{userId}")
+		public BankDetail getBankByUserId(@PathVariable(value="userId") int userId)
+		{
+			BankDetail bankDetails=bankDetailService.getBankByUserId(userId);
+			return bankDetails;
+		}
 	
 }

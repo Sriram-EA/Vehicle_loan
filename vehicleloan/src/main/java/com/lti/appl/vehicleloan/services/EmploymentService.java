@@ -9,6 +9,7 @@ public interface EmploymentService {
 	public abstract List<Employment> getAllEmployments(); 
 	public abstract Employment getEmploymentById(int employmentId);
 	public abstract String updateEmployment(Employment e, int userId);
-	public abstract String saveEmployment(Employment e ,int userId);
+	public abstract String saveEmployment(Employment e ,int userId); 
+	public abstract Employment getEmploymentByUserId(int userId);
 	
 }

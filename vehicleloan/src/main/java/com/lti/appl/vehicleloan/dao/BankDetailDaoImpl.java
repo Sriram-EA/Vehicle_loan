@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lti.appl.vehicleloan.beans.AccountType;
 import com.lti.appl.vehicleloan.beans.BankDetail;
+import com.lti.appl.vehicleloan.beans.Employment;
 import com.lti.appl.vehicleloan.beans.UserRegistration;
 
 @Repository
@@ -72,13 +73,31 @@ public class BankDetailDaoImpl implements BankDetailDao {
 		String str = "Select b from BankDetail b where b.userId.userID=:userId";
 		Query qry = em.createQuery(str);
 		qry.setParameter("userId", userId);
-		BankDetail bank = (BankDetail) qry.getSingleResult();
+		//BankDetail bank = (BankDetail) qry.getSingleResult(); 
+		List<BankDetail> bankList=qry.getResultList(); 
+	//	BankDetail bank=bankList.get(bankList.size()-1); 
+		BankDetail bank=(BankDetail) qry.setFirstResult(1);
 		System.out.println("Bank"+bank);
 		bank.setAccountType(acc.getAccountType());
 		em.merge(bank);
 		System.out.println(bank);
 		return "Bank Updated";
 		
+	}
+
+	@Override
+	public BankDetail getBankByUserId(int userId) {
+		
+		String str="select b from BankDetail b where b.userId.userID="+userId; 
+		Query qry=em.createQuery(str);
+	
+		List<BankDetail> bankList=qry.getResultList();  
+		System.out.println(bankList.toString());
+		BankDetail updatedBankDetails=bankList.get(bankList.size()-1);  
+
+		System.out.println(updatedBankDetails);
+		
+		return updatedBankDetails;
 	}
 
 	

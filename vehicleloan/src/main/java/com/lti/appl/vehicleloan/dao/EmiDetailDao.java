@@ -7,6 +7,7 @@ import com.lti.appl.vehicleloan.beans.EmiDetail;
 public interface EmiDetailDao {
 	
 	public abstract List<EmiDetail> getEmiList();
-	public abstract EmiDetail getEmiById(int emiId);
+	public abstract EmiDetail getEmiById(int emiId); 
+	public abstract int getEmiByUserId(int userId);
 
 }

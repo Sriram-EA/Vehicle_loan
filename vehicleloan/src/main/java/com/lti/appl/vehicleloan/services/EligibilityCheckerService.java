@@ -1,5 +1,10 @@
 package com.lti.appl.vehicleloan.services;
 
-public interface EligibilityCheckerService {
+import com.lti.appl.vehicleloan.beans.EligibilityChecker;
 
+public interface EligibilityCheckerService {
+	
+	
+	public abstract EligibilityChecker checkEligibility(EligibilityChecker eligibilityInputDetails);
+	
 }

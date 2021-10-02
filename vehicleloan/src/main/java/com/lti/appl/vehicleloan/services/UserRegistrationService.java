@@ -9,6 +9,11 @@ public interface UserRegistrationService {
 
 	public abstract List<UserRegistration> getAllUserRegistrations(); 
 	public abstract UserRegistration getUserById(int userId); 
-	public abstract EmailStatus checkEmail(String email); 
-	public abstract String createUser(UserRegistration userRegistration);
+	public abstract String checkEmail(String email); 
+	public abstract String createUser(UserRegistration userRegistration); 
+	public abstract boolean validateUser(String email,String password); 
+	public abstract int getUserAdminStatus(String email); 
+	public abstract int getUserId(String email); 
+	public abstract String getUserNameById(int userId); 
+	public abstract boolean checkEmailExists(String email);
 }

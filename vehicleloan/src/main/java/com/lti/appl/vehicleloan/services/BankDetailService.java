@@ -17,6 +17,7 @@ public interface BankDetailService {
 	
 	public abstract String updateBank(AccountType acc, int userId);
 	
+	public abstract BankDetail getBankByUserId(int userId);
 	
 	
 }

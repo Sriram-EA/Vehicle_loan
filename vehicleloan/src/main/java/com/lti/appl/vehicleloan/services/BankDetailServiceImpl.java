@@ -46,6 +46,12 @@ public class BankDetailServiceImpl implements BankDetailService {
 		// TODO Auto-generated method stub
 		return bankDetailDao.updateBank(acc, userId);
 	}
+	@Override
+	public BankDetail getBankByUserId(int userId) {
+		
+		BankDetail bankId=bankDetailDao.getBankByUserId(userId);
+		return bankId;
+	}
 	
 
 

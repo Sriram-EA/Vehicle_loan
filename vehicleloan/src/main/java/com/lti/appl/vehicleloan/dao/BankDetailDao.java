@@ -15,5 +15,7 @@ public abstract List<BankDetail> getBankDetailsList();
 	
 	public abstract String addBank(BankDetail b , int userId);
 	
-	public abstract String updateBank(AccountType acc, int userId);
+	public abstract String updateBank(AccountType acc, int userId); 
+	
+	public abstract BankDetail getBankByUserId(int userId);
 }

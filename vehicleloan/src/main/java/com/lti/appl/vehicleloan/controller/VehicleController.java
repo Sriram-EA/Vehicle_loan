@@ -35,5 +35,26 @@ public class VehicleController {
 		Vehicle vehicleDetail=vehicleService.getVehicleById(vehicleId);
 		return vehicleDetail;
 	}
-
+ 
+	// Sanketh Part
+	@GetMapping("/twowheelervehicles") 
+	public List<Vehicle> getTwoWheelerVehicles()
+	{
+		List<Vehicle> twoWheelerVehicleList=vehicleService.getTwoWheelerVehicles(); 
+		return twoWheelerVehicleList;
+	}
+	
+	@GetMapping("/threewheelervehicles") 
+	public List<Vehicle> getThreeWheelerVehicles()
+	{
+		List<Vehicle> threeWheelerVehicleList=vehicleService.getThreeWheelerVehicles(); 
+		return threeWheelerVehicleList;
+	}
+	
+	@GetMapping("/fourwheelervehicles") 
+	public List<Vehicle> getFourWheelerVehicles()
+	{
+		List<Vehicle> fourWheelerVehicleList=vehicleService.getFourWheelerVehicles(); 
+		return fourWheelerVehicleList;
+	}
 }

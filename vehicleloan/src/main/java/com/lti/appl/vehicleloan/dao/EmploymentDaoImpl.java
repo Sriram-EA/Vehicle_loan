@@ -1,5 +1,6 @@
 package com.lti.appl.vehicleloan.dao;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -66,6 +67,18 @@ public class EmploymentDaoImpl implements EmploymentDao{
 //	public String updateEmployment(Employment e, int userId) {
 //		// TODO Auto-generated method stub
 //		return null;
-//	}
+//	} 
+	@Override
+	public Employment getEmploymentByUserId(int userId) {
+		// TODO Auto-generated method stub
+		String str="select e from Employment e where e.userRegistration="+userId+" order by e.employmentId"; 
+		Query qry=em.createQuery(str);
+		
+		List<Employment> employmentList=qry.getResultList();
+	
+		Employment updatedEmploymentDetails=employmentList.get(employmentList.size()-1);
+		
+		return updatedEmploymentDetails;
+	}
 
 }

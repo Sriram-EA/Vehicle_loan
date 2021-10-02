@@ -65,5 +65,13 @@ public class EmploymentServiceImpl implements EmploymentService {
 		String msg =  employmentDao.updateEmployment(e, userId);
 		return msg;
 	}
+	
+	@Override
+	public Employment getEmploymentByUserId(int userId) {
+		// TODO Auto-generated method stub
+		
+		
+		return employmentDao.getEmploymentByUserId(userId);
+	}
 
 }

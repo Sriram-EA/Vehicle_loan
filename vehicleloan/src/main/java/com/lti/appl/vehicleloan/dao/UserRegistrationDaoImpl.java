@@ -35,7 +35,7 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao{
 	}
 
 	@Override
-	public EmailStatus checkEmail(String email) {
+	public String checkEmail(String email) {
 		
 		String str="select u from UserRegistration u"; 
 		Query qry=em.createQuery(str);
@@ -53,13 +53,11 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao{
 		
 		if(emailFlag==0)
         {  
-			 status.setEmailStatus("No Email Exists");
-			 return status;
+			 return "No Email Exists";  
         } 
         else 
         { 
-        	status.setEmailStatus("Email already Exists");
-			 return status;
+        	 return "Email already Exists";
         }
 	}
 
@@ -69,6 +67,95 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao{
 	
 		em.persist(userRegistration); 
 		return "New User Added";
+	}
+
+	@Override
+	public boolean validateUser(String email, String password) {
+		String str="select u from UserRegistration u"; 
+		Query qry=em.createQuery(str);
+		List<UserRegistration> userList=qry.getResultList(); 
+		int emailFlag=0;        // Initially no Record in database; 
+		boolean validate=false; 
+//		for(UserRegistration userRegisterList:userList)
+//		{ 
+//			System.out.println(userRegisterList.getEmailId()+" "+userRegisterList.getPassword());
+//		}
+		for(int i=0;i<userList.size();i++)
+		{
+//			System.out.println(email+" "+password); 
+//			System.out.println(userList.get(i).getEmailId()+" "+userList.get(i).getPassword()); 
+			if(email.equals(userList.get(i).getEmailId()))
+			{  
+				if(password.equals(userList.get(i).getPassword())) 
+				{  
+					System.out.println(email+" "+password);
+					System.out.println("true");
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public int getUserAdminStatus(String email) {
+		 
+		String str="select u from UserRegistration u"; 
+		Query qry=em.createQuery(str);
+		List<UserRegistration> userList=qry.getResultList();  
+		int userAdminStatus=0;
+		for(int i=0;i<userList.size();i++)
+		{ 
+			if(email.equals(userList.get(i).getEmailId()))
+			{
+				userAdminStatus=userList.get(i).getUserAdminStatus();
+			}
+		} 
+		return userAdminStatus;
+	}
+
+	@Override
+	public int getUserId(String email) {
+		String str="select u from UserRegistration u"; 
+		Query qry=em.createQuery(str);
+		List<UserRegistration> userList=qry.getResultList();  
+		int userId=0; 
+		for(int i=0;i<userList.size();i++)
+		{ 
+			if(email.equals(userList.get(i).getEmailId()))
+			{
+				userId=userList.get(i).getUserID();
+			}
+		} 
+		return userId;
+		
+	}  
+	// Sanketh Part
+	@Override
+	public String getUserNameById(int userId) {
+		// TODO Auto-generated method stub
+		
+		String str="select concat(u.firstName,' ',u.lastName) from UserRegistration u where u.userID="+userId; 
+		Query qry=em.createQuery(str);
+		String userName =(String)qry.getSingleResult();
+		return userName;
+		
+	}
+
+	@Override
+	public boolean checkEmailExists(String email) {
+		String str="select u from UserRegistration u"; 
+		Query qry=em.createQuery(str);
+		List<UserRegistration> userList=qry.getResultList();  
+		boolean status=false; 
+		for(int i=0;i<userList.size();i++)
+		{ 
+			if(email.equals(userList.get(i).getEmailId())) 
+			{
+				status=true;
+			} 
+		}
+		return status;
 	}
 
 }

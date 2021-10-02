@@ -43,6 +43,12 @@ public class EmiDetailServiceImpl implements EmiDetailService{
 	public EmiDetail getEmiById(int emiId) {
 		EmiDetail emi=emiDetailDao.getEmiById(emiId);
 	    return emi;
+	} 
+	
+	@Override
+	public int getEmiByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return emiDetailDao.getEmiByUserId(userId);
 	}
 
 }

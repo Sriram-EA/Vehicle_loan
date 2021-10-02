@@ -52,9 +52,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
 
 	@Override 
-	public EmailStatus checkEmail(String email) {
+	public String checkEmail(String email) {
 		
-		EmailStatus emailMsg=userRegistrationDao.checkEmail(email); 
+		String emailMsg=userRegistrationDao.checkEmail(email); 
 		return emailMsg;
 
 	}
@@ -63,6 +63,45 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	public String createUser(UserRegistration userRegistration) {
 		String msg=userRegistrationDao.createUser(userRegistration); 
 		return msg;
+	}
+
+
+	@Override
+	public boolean validateUser(String email, String password) {
+		
+		boolean validate=userRegistrationDao.validateUser(email, password);
+		return validate;
+	}
+
+
+	@Override
+	public int getUserAdminStatus(String email) {
+
+        int userAdminStatus=userRegistrationDao.getUserAdminStatus(email);
+		return userAdminStatus;
+	}
+
+
+	@Override
+	public int getUserId(String email) {
+		int userId=userRegistrationDao.getUserId(email);
+		return userId;
+	} 
+	
+	@Override
+	public String getUserNameById(int userId) {
+		// TODO Auto-generated method stub
+		
+		String userName=userRegistrationDao.getUserNameById(userId);
+		
+		return userName;
+	}
+
+
+	@Override
+	public boolean checkEmailExists(String email) {
+		boolean status=userRegistrationDao.checkEmailExists(email);
+		return status;
 	}
 
 }

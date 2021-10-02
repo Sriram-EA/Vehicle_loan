@@ -8,11 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.appl.vehicleloan.beans.ApplicationDetails;
 import com.lti.appl.vehicleloan.beans.ApplicationForm;
-
+import com.lti.appl.vehicleloan.beans.FetchDetail;
 import com.lti.appl.vehicleloan.services.ApplicationFormService;
 import com.lti.appl.vehicleloan.services.ApplicationFormServiceImpl;
 
@@ -64,9 +67,20 @@ public class ApplicationFormController {
 		List<ApplicationForm> applist= applicationService.getApplicationList();
 		return applist;
 		
+	}  
+	@GetMapping(value="/fetch/{userid}/{vehicleid}/{empid}/{bankid}/{principle}/{tenure}/{emi}",produces="application/json")
+	public FetchDetail fetchdetails(@PathVariable(value="userid") int userId ,@PathVariable(value="vehicleid") int vehicleId,@PathVariable(value="empid") int empId,@PathVariable(value="bankid") int bankId,@PathVariable(value="principle") int principle,@PathVariable(value="tenure") int tenure,@PathVariable(value="emi") int emi)
+	{
+		return applicationService.fetch(userId,vehicleId,empId,bankId,principle,tenure,emi);
 	}
 	
+	//http://localhost:8050/app/fetch/1001/101/10001
 	
+	@PostMapping(value="/addapp/{userid}/{vehicleid}/{empid}/{bankid}/{principle}/{tenure}/{emi}")
+	public String fill(@RequestBody ApplicationDetails app,@PathVariable(value="userid") int userId ,@PathVariable(value="vehicleid") int vehicleId,@PathVariable(value="empid") int empId,@PathVariable(value="bankid") int bankId,@PathVariable(value="principle") int principle,@PathVariable(value="tenure") int tenure,@PathVariable(value="emi") int emi)
+	{
+		return applicationService.fill(app,userId,vehicleId,empId,bankId,principle,tenure,emi);
+	}
 	
 	
 }

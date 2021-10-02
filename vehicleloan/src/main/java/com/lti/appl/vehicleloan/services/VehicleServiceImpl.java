@@ -14,22 +14,7 @@ public class VehicleServiceImpl implements VehicleService{
 	@Autowired
 	private VehicleDao vehicleDao; 
 	
-	public VehicleServiceImpl() {
-		super();
-	}
 
-	public VehicleServiceImpl(VehicleDao vehicleDao) {
-		super();
-		this.vehicleDao = vehicleDao;
-	}
-
-	public VehicleDao getVehicleDao() {
-		return vehicleDao;
-	}
-
-	public void setVehicleDao(VehicleDao vehicleDao) {
-		this.vehicleDao = vehicleDao;
-	}
 
 	@Override
 	public List<Vehicle> getAllVehicles() {
@@ -43,6 +28,29 @@ public class VehicleServiceImpl implements VehicleService{
 		
 		Vehicle vehicleDetail=vehicleDao.getVehicleById(vehicleId);
 		return vehicleDetail;
+	} 
+	
+	@Override
+	public List<Vehicle> getTwoWheelerVehicles() {
+		// TODO Auto-generated method stub
+		List<Vehicle> threeWheelerVehicleList=vehicleDao.getTwoWheelerVehicles(); 
+		return threeWheelerVehicleList;
+		
+		
 	}
+
+	@Override
+	public List<Vehicle> getThreeWheelerVehicles() {
+		List<Vehicle> threeWheelerVehicleList=vehicleDao.getThreeWheelerVehicles(); 
+		return threeWheelerVehicleList;
+	}
+
+	@Override
+	public List<Vehicle> getFourWheelerVehicles() {
+		List<Vehicle> threeWheelerVehicleList=vehicleDao.getFourWheelerVehicles(); 
+		return threeWheelerVehicleList;
+	}
+	
+	
 
 }

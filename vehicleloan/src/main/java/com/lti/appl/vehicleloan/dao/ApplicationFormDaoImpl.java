@@ -9,11 +9,12 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.lti.appl.vehicleloan.beans.ApplicationDetails;
 import com.lti.appl.vehicleloan.beans.ApplicationForm;
 import com.lti.appl.vehicleloan.beans.BankDetail;
 import com.lti.appl.vehicleloan.beans.EmiDetail;
 import com.lti.appl.vehicleloan.beans.Employment;
-
+import com.lti.appl.vehicleloan.beans.FetchDetail;
 import com.lti.appl.vehicleloan.beans.UserRegistration;
 import com.lti.appl.vehicleloan.beans.Vehicle;
 
@@ -68,7 +69,56 @@ public class ApplicationFormDaoImpl implements ApplicationFormDao {
 		List<ApplicationForm> applist =  qry.getResultList();
 		return applist;
 	}
+	@Override
+	public FetchDetail fetch(int userId, int vehicleId, int empId,int bankId,int principle,int tenure,int emi) {
+		UserRegistration ur = em.find(UserRegistration.class, userId);
+		Vehicle vh = em.find(Vehicle.class, vehicleId);
+		Employment e = em.find(Employment.class, empId);
+		BankDetail bd = em.find(BankDetail.class, bankId);
+		FetchDetail fd = new FetchDetail(vh.getVehicleType(),vh.getVehicleModel(),vh.getVehicleBrand(),vh.getInterest(),e.getEmploymentType(),e.getAnnualSalary(),ur.getFirstName(),ur.getLastName(),ur.getEmailId(),bd.getIfscCode(),bd.getBankBranch(),emi,principle,tenure,bd.getAccountNumber(),bd.getAccountType());
+		System.out.println(fd);
+		return fd;
+	}
+
+	@Transactional
+	@Override
+	public String fill(ApplicationDetails app, int userId, int vehicleId, int empId, int bankId, int principle,
+			int tenure, int emi) {
+		UserRegistration ur = em.find(UserRegistration.class, userId);
+		Vehicle vh = em.find(Vehicle.class, vehicleId);
+		Employment emp = em.find(Employment.class, empId);
+		BankDetail bd = em.find(BankDetail.class, bankId);
+		EmiDetail emidetail = new EmiDetail();
+		emidetail.setPrinciple(principle);
+		emidetail.setTenure(tenure);
+		emidetail.setEmi(emi);
+		emidetail.setEmployment(emp);
+		emidetail.setUser(ur);
+		emidetail.setVehicle(vh);
+		System.out.println(emidetail);
+		em.persist(emidetail);
+		System.out.println("Emi added");
+		int emiId= emidetail.getEmiId();
+		EmiDetail ed = em.find(EmiDetail.class, emiId);
+		ApplicationForm appl = new ApplicationForm();
+		appl.setAge(app.getAge());
+		appl.setGender(app.getGender());
+		appl.setMobileNo(app.getMobileNumber());
+		appl.setAddress(app.getAddress());
+		appl.setCity(app.getCity());
+		appl.setState(app.getState());
+		appl.setPincode(app.getPinCode());
+		appl.setUserRegistration(ur);
+		appl.setVehicle(vh);
+		appl.setEmi(ed);
+		appl.setEmp(emp);
+		appl.setBank(bd);
+		System.out.println("App"+appl);
+		em.persist(appl);
+		
+		
+		return "Application Uploaded";
 	
-	
+	}
 
 }

@@ -55,6 +55,17 @@ public class EmploymentController {
 		System.out.println("Obj"+e);
 		String msg = employmentService.updateEmployment(e,userId);
 		return msg;
+	} 
+	
+	// Sanketh Part 
+	
+	@GetMapping("/employmentbyuserid/{userId}")
+	public Employment getEmploymentByUserId(@PathVariable(value="userId") int userId)
+	{
+			
+		Employment employmentDetails=employmentService.getEmploymentByUserId(userId);
+		return employmentDetails;
+		
 	}
 	
 
