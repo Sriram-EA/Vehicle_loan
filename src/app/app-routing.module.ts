@@ -6,14 +6,21 @@ import { AddEmploymentComponent } from './add-employment/add-employment.componen
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ApplidListComponent } from './admin-dashboard/applid-list/applid-list.component';
 import { ReportComponent } from './admin-dashboard/report/report.component';
+import { AppformComponent } from './appform/appform.component';
+import { EligibilityChecker } from './EligibilityChecker';
 import { EmicalculatorComponent } from './emicalculator/emicalculator.component';
+import { FourWheelerEligibilityCheckerComponent } from './four-wheeler-eligibility-checker/four-wheeler-eligibility-checker.component';
 import { HomeComponent } from './home/home.component';
+import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { LoginComponent } from './login/login.component';
 import { StatusComponent } from './status/status.component';
+import { ThreeWheelerEligibilityCheckerComponent } from './three-wheeler-eligibility-checker/three-wheeler-eligibility-checker.component';
+import { TwoWheelerEligibilityCheckerComponent } from './two-wheeler-eligibility-checker/two-wheeler-eligibility-checker.component';
 import { UpdateBankComponent } from './update-bank/update-bank.component';
 import { UpdateEmploymentComponent } from './update-employment/update-employment.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserregistrationComponent } from './userregistration/userregistration.component';
+import { VehicleTypesComponent } from './vehicle-types/vehicle-types.component';
 
 
 const routes: Routes = [   
@@ -31,7 +38,13 @@ const routes: Routes = [
   {path:'updateemp',component:UpdateEmploymentComponent},
   {path:'addbank',component:AddBankComponent},
   {path:'checkapplication',component:ApplidListComponent},
-  {path:'report/:id',component:ReportComponent}
+  {path:'report/:id',component:ReportComponent},
+  {path:'vehicletypes',component:VehicleTypesComponent},
+  {path:'loanDetails',component:LoanDetailsComponent},
+  {path:'twowheelereligibilitychecker',component:TwoWheelerEligibilityCheckerComponent},
+  {path:'threewheelereligibilitychecker',component:ThreeWheelerEligibilityCheckerComponent}, 
+  {path:'fourwheelereligibilitychecker',component:FourWheelerEligibilityCheckerComponent},
+  {path:'applicationform',component:AppformComponent}
 ];
 
 @NgModule({

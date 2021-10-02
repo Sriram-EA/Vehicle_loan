@@ -1,0 +1,91 @@
+<p>loan-details works!</p>
+
+<div class="container">
+
+<form [formGroup]="loanForm" (ngSubmit)="onSubmit()" >
+
+  {{vehicleBrand}}
+  {{vehicleModel}}
+  {{vehicleType}}
+  {{interest}}
+
+
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">VehicleType</label>
+    <input formControlName="vehicleType" type="text" class="form-control" id="formVehicleTypeId" placeholder={{vehicleType}} [readonly]="readonly" >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput2">VehicleBrand</label>
+    <input formControlName="vehicleBrand" type="text" class="form-control" id="formVehicleBrandId"  placeholder={{vehicleBrand}} [readonly]="readonly">
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlInput3">vehicleModel</label>
+    <input formControlName="vehicleModel" type="text" class="form-control" id="formVehicleModelId"  placeholder={{vehicleModel}} [readonly]="readonly">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput4">Interest</label>
+    <input formControlName="interest" type="text" class="form-control" id="formVehicleInterestId"   placeholder={{interest}}% [readonly]="readonly">
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1"> <b> <span style="color:#000000"> Tenure(Select Number of Months) </span> </b></label>
+    <select  formControlName="tenure"class="form-control" id="formSelecttenureId" name="tenureInput"  [(ngModel)]="tenureForEmiCalculation">
+
+      <option value="" >Select Number of Months </option>
+      <option value="6">6</option>
+      <option value="12">12</option>
+      <option value="18">18</option>
+
+      <option value="24">24</option>
+
+      <option value="32">32</option>
+
+      <option value="36">36</option>
+      <option value="42">42</option>
+      <option value="48">48</option>
+      <option value="54">54</option>
+
+      <option value="60">60</option>
+
+      <option value="66">66</option>
+
+      <option value="72">72</option>
+    </select>
+
+
+  </div>
+  <small *ngIf="tenureForEmiCalculation!=0" class="text-danger">Priciple Amount Range(min:{{minimumPrincipleAmount}}-max:{{maximumPrincipleAmount}})</small>
+  <div class="form-group">
+    <label for="exampleFormControlInput10"><b><span style="color:#000000">Principle</span></b></label>
+    <input formControlName="principle" type="text" class="form-control" id="formEmiAmountId" [(ngModel)]="principle" (change)="change()">
+  </div>
+<small *ngIf="principle==0" class="text-danger">Please enter principle amount</small>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput10"><b><span style="color:#000000">EMI</span></b></label>
+    <input formControlName="emiAmount" type="text" class="form-control" id="formEmiAmountId" placeholder={{emiAmount}} [readonly]="readonly">
+  </div>
+  <!-- <div class="form-group" *ngIf="eligibilityStatus=='Eligible'">
+    <label for="exampleFormControlInput10">EligibilityStatus</label>
+    <input formControlName="eligibilityStatus" type="button" class="form-control" id="formEmiId" value={{eligibilityStatus}}:Congratulations!!_you_are_eligible_to_apply_for_loan...Click_on_Contine>
+  </div> -->
+
+
+  <div class="form-group text-center">
+
+    <button [routerLink]="['/vehicletypes']" class="btn btn-danger" type="reset">Back</button>
+    &nbsp; &nbsp;
+    <input type="submit" class="form-control" id="formSubmitButtonId" class="btn btn-success">
+    &nbsp; &nbsp;
+    <a class="btn btn-warning" [routerLink]="['/applicationform']"  *ngIf="eligibilityStatus=='Eligible'">Apply Loan</a>
+
+
+  </div>
+</form>
+</div>

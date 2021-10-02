@@ -12,10 +12,16 @@ import { UserRegistration } from '../userregistration/UserRegistration';
 export class LoginComponent implements OnInit {
 
   addForm: FormGroup;
-  submitted: boolean = false; 
-  userList:UserRegistration[]; 
-  display:boolean;
-
+  submitted: boolean = false;
+  userList: UserRegistration[];
+  validation: boolean;
+  userAdminStatus: number;
+  userID: number;
+  emailExists: boolean; 
+  error1:string;
+  error2:string; 
+  error1display:boolean;
+  error2display:boolean
 
   constructor(private userService: UserdetailsService, private fb: FormBuilder, private router: Router) { }
 
@@ -24,59 +30,78 @@ export class LoginComponent implements OnInit {
       userID: [],
       emailId: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
-    });  
+    });
+
     this.userService.getUserList()
-    .subscribe(response=>
-       {
-         this.userList=response;
-       } 
-     );  
+      .subscribe(
+        data => {
+          this.userList = data;
+        }
+      )
   }
-  
+
+  //this.formname.reset(); 
+
   onSubmit() {
     this.submitted = true;
     if (this.addForm.invalid) {
       return;
     }
-    //     this.userService.createUser(this.addForm.value)		  // calls createUser method from user service					
-    //       .subscribe( data => {	 		
-    //          this.router.navigate(['/login']);							
-    //       });		  
-  
-    
-    let allUserList=this.userList;   
-    let userID;
-    let userAdminStatus;  
-    console.log(this.userList);
-    for(let i=0;i<allUserList.length;i++)
-    { 
-      if(allUserList[i].emailId==this.addForm.controls.emailId.value)
-      { 
-        if(allUserList[i].password==this.addForm.controls.password.value) 
-        { 
-          userID=allUserList[i].userID; 
-          userAdminStatus=allUserList[i].userAdminStatus;   
-          localStorage.setItem("userID",userID.toString());		 
-          localStorage.setItem("userAdminStatus",userAdminStatus.toString()); 
-          if(userAdminStatus==0)
-          {								
-            this.router.navigate(['user-dashboard']);
+
+    this.userService.checkEmail(this.addForm.controls.emailId.value)
+      .subscribe(
+        data => {
+          this.emailExists = data;
+          if (this.emailExists != true) {
+            //No Email Exists 
+            this.error1="Email Id not Found";  
+            console.log(this.error1);
+            this.error1display=true;
+
           }
-          else 
-          {
-            this.router.navigate(['admin-dashboard']);
+          else {
+            // Email Exists
+            this.userService.validateUser(this.addForm.controls.emailId.value, this.addForm.controls.password.value)
+              .subscribe(data => {
+                this.validation = data;
+                if (this.validation == true) {
+
+                  this.userService.getUserAdminStatus(this.addForm.controls.emailId.value)
+                    .subscribe(
+                      data => {
+
+                        this.userAdminStatus = data;
+
+                        this.userService.getUserId(this.addForm.controls.emailId.value)
+                          .subscribe(
+                            data => {
+                              this.userID = data;
+                              console.log(this.userList);
+                              localStorage.setItem("userAdminStatus", this.userAdminStatus.toString());
+                              localStorage.setItem("userID", this.userID.toString());
+                              if (this.userAdminStatus == 0) {
+                                this.router.navigate(['user-dashboard']);
+                              }
+                              else {
+                                this.router.navigate(['admin-dashboard']);
+                              }
+
+                            }
+                          )
+                      }
+                    )
+                } 
+                else 
+              {
+                this.error2="Invalid Password"; 
+                this.error2display=true;
+              }
+              });
           }
-          this.display=false;
-        } 
-        else 
-        { 
-          this.display=true; 
         }
-      }
-    }
-    console.log(userID);
-    console.log(userAdminStatus);
-  } 
+      )
+  }
+
 }
 
 

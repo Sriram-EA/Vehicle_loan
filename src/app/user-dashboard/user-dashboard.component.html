@@ -1,11 +1,27 @@
-<h1>User DashBoard</h1> 
+<!-- <h1>User DashBoard</h1> 
 <div class="sidebar">
-<a  [routerLink]= "['/addemp']">Add your Employment Details </a><br>
+<a  [routerLink]= "['/addemp']">Add/Update your Employment Details </a><br>
 <a class="appstatus" [routerLink]= "['/status']">Application Status </a><br>
 <a  [routerLink]= "['/addbank']">Add Bank Details </a><br> 
-<a class="bankdetails" [routerLink]="['/updatebank']">Update Bank Details </a><br>
-</div>
+<a class="bankdetails" [routerLink]="['/updatebank']">Update Bank Details </a><br> 
+<a [routerLink]="['/vehicletypes']">Apply Loan</a>
+</div> -->
 
-<div class="content">
-    <router-outlet></router-outlet> 
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h6>User Dashboard</h6>
+        <ul>
+            <li><a [routerLink]="['/addemp']"> <i class="fas fa-home"></i>Add/Update your Employment Details</a></li>
+            <li><a class="appstatus" [routerLink]="['/status']"><i class="fas fa-user"></i>Application Status </a></li>
+            <li><a [routerLink]="['/addbank']"><i class="fas fa-user"></i>Add Bank Details</a></li>
+            <li><a class="bankdetails" [routerLink]="['/updatebank']"><i class="fas fa-project-diagram"></i>Update Bank
+                    Details<br> </a></li>
+            <li><a [routerLink]="['/vehicletypes']"><i class="fas fa-blog"></i>Apply Loan</a></li>
+            <li><a class="bankdetails" [routerLink]="['/aboutus']"><i class="fas fa-address-book"></i>About us</a></li>
+        </ul>
+    </div>
+</div>
+<div class="main_content">
+    <router-outlet></router-outlet>
 </div>

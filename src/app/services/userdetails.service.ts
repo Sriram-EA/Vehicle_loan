@@ -22,15 +22,42 @@ export class UserdetailsService {
  
   public checkEmailExists(emailRegisterCheck:string)
   {  
-    console.log("I am inside check email exists service")
-    console.log(this.http.post<any>(this.baseUrl+'/checkemail/',emailRegisterCheck));
-    return this.http.post<any>(this.baseUrl+'/checkemail/',emailRegisterCheck); 
-
+    return this.http.get<any>(this.baseUrl+'/checkemail/'+ emailRegisterCheck); 
   }
+ 
+  public validateUser(email:string,passoword:string)
+  {
+    return this.http.get<any>(this.baseUrl+'/validateuser/'+email+'/'+passoword);
+  } 
+
+  public getUserAdminStatus(email:string)
+  {
+    return this.http.get<number>(this.baseUrl+'/getuseradminstatus/'+email);
+  } 
+
+  public getUserId(email:string)
+  {
+    return this.http.get<number>(this.baseUrl+'/getuserid/'+email);
+  }
+  
   public createUser(user: UserRegistration) {
     console.log("inside create user" + user);
     return this.http.post(this.baseUrl + '/register', user);
+  } 
+  
+  public getCurrentUserDetails(userId:Number)
+ {
+
+ return this.http.get<any>(this.baseUrl+"/usernamebyid/"+userId);
+
+ }  
+
+  public checkEmail(email:string)
+  {
+    return this.http.get<boolean>(this.baseUrl+'/checkemaillogin/'+email);
   }
+
+  
 
 
   // public checkEmail(userRegistration:UserRegistration)

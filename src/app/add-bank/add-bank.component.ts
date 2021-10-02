@@ -10,23 +10,42 @@ import { AddbankService } from '../services/addbank.service';
 })
 export class AddBankComponent implements OnInit {
 
-  addbankForm:FormGroup;
-  userId:number=1004;
-  constructor(private fb: FormBuilder,private addempService : AddbankService,private r:Router) { }
+  addbankForm: FormGroup;
+  userId: number;
+  bankId: number;
+  constructor(private fb: FormBuilder, private addempService: AddbankService, private r: Router, private addBankService: AddbankService) { }
   ngOnInit(): void {
 
-    this.addbankForm=this.fb.group({
-      bankId:[],
-      accountNumber:[''],
-      ifscCode:[''],
-      bankBranch:[''],
-      accountType:[''],
-      userID:[],
+    this.userId = Number(localStorage.getItem("userID"));
+    this.addbankForm = this.fb.group({
+      bankId: [],
+      accountNumber: [''],
+      ifscCode: [''],
+      bankBranch: [''],
+      accountType: [''],
+      userID: [],
     });
   }
-  onSubmit(value:string){
-    console.log("Component",value);
-    this.addempService.addBankById(this.addbankForm.value,this.userId).subscribe(data =>{});
+  onSubmit(value: string) {
+    //localstorage
+    console.log("Component", value);
+    this.addempService.addBankById(this.addbankForm.value, this.userId)
+      .subscribe(
+        data => { 
+          console.log("inside add Emp Service");
+        }
+      ) 
+      
+      console.log("inside add Emp Service");
+
+      this.addBankService.getBankIdByUserId(this.userId)
+            .subscribe(
+              data => {
+                this.bankId = data.bankId;  
+                console.log("inside addbankservice");
+                localStorage.setItem("bankId",this.bankId.toString());
+              }
+            );
     this.addbankForm.reset();
   }
-  }
+}

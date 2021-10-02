@@ -2,11 +2,13 @@
 <div class="col-md-6 col-md-offset-2">
     <h2 class="signup">Login</h2>
     <br />
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">  
     <div class="center">
+      <div *ngIf="error1display">{{error1}}</div> 
+      <div *ngIf="error2display">{{error2}}</div>
           <div class="form-group">
-              <label for="email">Email address:</label>
-              <input type="email" formControlName="emailId" placeholder="Email" name="emailId" class="form-control" id="emailId"  required>
+              <label for="emailId">Email address:</label>
+              <input type="email" formControlName="emailId" placeholder="Email" name="emailId" class="form-control" id="emailId" required>
               <div *ngIf="submitted && addForm.controls.emailId.errors" class="danger">
                     <div class="text-danger" *ngIf="addForm.controls.emailId.errors.required">Email is required
           </div>
@@ -21,13 +23,11 @@
           </div>
                   </div>
             </div> 
-        <h1  *ngIf="display" style="margin-left:-15% ;">Incorrect Password..!</h1>
           <button class="btn btn-success">Login</button>&nbsp; &nbsp;
       <div class="form-group">
       </div>
     </div>
-
         <br /><br />
-      
+
   </form>
 </div>

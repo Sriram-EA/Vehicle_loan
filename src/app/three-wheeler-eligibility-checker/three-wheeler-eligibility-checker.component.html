@@ -1,0 +1,89 @@
+<div class="container">
+
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()" >
+
+
+
+
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Name</label>
+    <input formControlName="applicantName" type="text" class="form-control" id="formNameId" placeholder="Sanketh" value={{userName}} [readonly]="readonly" >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput2">VehicleType</label>
+    <input formControlName="vehicleType" type="text" class="form-control" id="formVehicleTypeId"  value={{vehicleType}}heeler [readonly]="readonly">
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlSelect1"> <b> <span style="color:#000000"> Vehicle Brand </span> </b></label>
+    <select  formControlName="vehicleId"class="form-control" id="formSelectVehicleId" name="fourWheelerInput" (click)="change()">
+      <option value="">Select Vehicle </option>
+      <option *ngFor="let vehicle of threeWheelerVehicleList" value={{vehicle.vehicleId}}>
+        {{vehicle.vehicleBrand}}-{{vehicle.vehicleModel}}
+
+
+
+      </option>
+
+    </select>
+
+
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleFormControlInput3">VehicleShowRoomPrice</label>
+    <input formControlName="showRoomPrice" type="text" class="form-control" id="formVehicleShowRoomPriceId"  value={{vehicleShowRoomPrice}} [readonly]="readonly">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput4">VehicleOnRoadPrice</label>
+    <input formControlName="onRoadPrice" type="text" class="form-control" id="formVehicleOnRoadPriceId"  value={{vehicleOnRoadPrice}} [readonly]="readonly">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput5">Interest</label>
+    <input formControlName="interest" type="text" class="form-control" id="formVehicleInterestId"   placeholder="%" value={{interest}} [readonly]="readonly">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput6">Age</label>
+    <input  formControlName="age" type="text" class="form-control" id="formAgeId">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput7">Gender</label>
+    <input formControlName="gender" type="text" class="form-control" id="formGenderId">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput8">Type of Employment</label>
+    <input  formControlName="typeOfEmployment" type="text" class="form-control" id="formEmploymentTypeId" value={{typeOfEmployment}} [readonly]="readonly">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput9">Annual Income</label>
+    <input formControlName="annualIncome" type="text" class="form-control" id="formIncomeId" value={{annualIncome}} [readonly]="readonly">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput10">EMI</label>
+    <input formControlName="existingEmi" type="text" class="form-control" id="formEmiId" value={{existingEmiAmount}} [readonly]="readonly">
+  </div>
+  <div class="form-group" *ngIf="eligibilityStatus=='Eligible'">
+    <label for="exampleFormControlInput10">EligibilityStatus</label>
+    <input formControlName="eligibilityStatus" type="button" class="form-control" id="formEmiId" value={{eligibilityStatus}}:Congratulations!!_you_are_eligible_to_apply_for_loan...Click_on_Contine>
+  </div>
+
+  <h6 style="color:green;" *ngIf="isSubmitted==true" id="formStatusId">Form Successfully submitted</h6>
+
+  <div class="form-group text-center">
+
+    <button [routerLink]="['/vehicletypes']" class="btn btn-danger" type="reset">Back</button>
+    &nbsp; &nbsp;
+    <input type="submit" class="form-control" id="formSubmitButtonId" class="btn btn-success">
+    &nbsp; &nbsp;
+    <a [routerLink]="['/loanDetails']" class="btn btn-warning" *ngIf="eligibilityStatus=='Eligible'" routerLinkActive="active">Continue</a>
+
+    <!-- <a [routerLink]="['/loanDetails']" class="btn btn-primary active" role="button" routerLinkActive="active">Loan Details</a> -->
+  </div>
+</form>
+
+
+</div>

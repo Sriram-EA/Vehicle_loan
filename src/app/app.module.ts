@@ -18,6 +18,15 @@ import { StatusComponent } from './status/status.component';
 import { AddBankComponent } from './add-bank/add-bank.component';
 import { ApplidListComponent } from './admin-dashboard/applid-list/applid-list.component';
 import { ReportComponent } from './admin-dashboard/report/report.component';
+import { FourWheelerEligibilityCheckerComponent } from './four-wheeler-eligibility-checker/four-wheeler-eligibility-checker.component';
+import { LoanDetailsComponent } from './loan-details/loan-details.component';
+import { VehicleTypesComponent } from './vehicle-types/vehicle-types.component';
+import { TwoWheelerEligibilityCheckerComponent } from './two-wheeler-eligibility-checker/two-wheeler-eligibility-checker.component';
+import { ThreeWheelerEligibilityCheckerComponent } from './three-wheeler-eligibility-checker/three-wheeler-eligibility-checker.component';
+import { AppformComponent } from './appform/appform.component';
+
+
+
 
 
 @NgModule({
@@ -36,7 +45,13 @@ import { ReportComponent } from './admin-dashboard/report/report.component';
     StatusComponent,
     AddBankComponent,
     ApplidListComponent,
-    ReportComponent
+    ReportComponent,
+    FourWheelerEligibilityCheckerComponent,
+    LoanDetailsComponent,
+    VehicleTypesComponent,
+    TwoWheelerEligibilityCheckerComponent,
+    ThreeWheelerEligibilityCheckerComponent,
+    AppformComponent,
   ],
   imports: [
     BrowserModule,

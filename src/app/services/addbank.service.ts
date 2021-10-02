@@ -19,5 +19,11 @@ export class AddbankService {
     //const body=JSON.stringify(e)
     console.log("URL is",this.baseUrl+'/addbank/'+userId);
     return this.http.post(this.baseUrl+'/addbank/'+userId,e);        
+  } 
+
+  public getBankIdByUserId(userId: Number) {
+
+    return this.http.get<any>(this.baseUrl + "/bankbyuserid/" + userId);
+
   }
 }

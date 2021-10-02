@@ -32,8 +32,9 @@ export class UpdateBankComponent implements OnInit {
   }
   loadbankservice()
   {
-    console.log("Inside bank Service");
-    this.loadservice.load(Number(localStorage.getItem("userID")))
+    console.log("Inside bank Service"); 
+    console.log(localStorage.getItem("userID"));
+    this.loadservice.load(Number(localStorage.getItem("userID")))  
     .subscribe(response=>{this.ifscCode=response.ifscCode,this.accountNumber=response.accountNumber,this.bankBranch=response.bankBranch});
   }
   onSubmit(value:string){
