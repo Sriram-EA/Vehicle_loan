@@ -40,6 +40,8 @@ export class TwoWheelerEligibilityCheckerComponent implements OnInit {
   addForm!:FormGroup;
 
   id:number=0;
+  errorMessage: any;
+  loading: boolean;
 
   constructor(private fb:FormBuilder,private userService:UserdetailsService,private vehicleService:VehicleService,private emiService:EmiDetailService,private employmentService:EmploymentDetailsService,private eligibilityCheckerService:EligibilityCheckerService) {
 
@@ -78,14 +80,28 @@ public loadVehicleList()
   this.vehicleService.getTwoWheelerVehicleList()
   .subscribe(response=>{this.twoWheelerVehicleList=response;
 
-  this.vehicleType=this.twoWheelerVehicleList[0].vehicleType;});
+  this.vehicleType=this.twoWheelerVehicleList[0].vehicleType;},
+  (error) => {                              //Error callback
+    console.error('error caught in component')
+    this.errorMessage = error;
+    this.loading = false;
+
+    throw error;
+  });
 
 }
 
 public loadUserDetails(userId:Number)
 {
   this.userService.getCurrentUserDetails(this.userIdFromLocalStorage)
-  .subscribe(response=>{this.userName=response.userName})
+  .subscribe(response=>{this.userName=response.userName},
+    (error) => {                              //Error callback
+      console.error('error caught in component')
+      this.errorMessage = error;
+      this.loading = false;
+
+      throw error;
+    })
 
 
 }
@@ -96,7 +112,14 @@ public loadEmiDetails()
 
 this.emiService.getEmiById(this.userIdFromLocalStorage)
 .subscribe(response=>{this.existingEmiAmount=Number(response.userName);
-console.log(this.existingEmiAmount)})
+console.log(this.existingEmiAmount)},
+(error) => {                              //Error callback
+  console.error('error caught in component')
+  this.errorMessage = error;
+  this.loading = false;
+
+  throw error;
+})
 
 }
 public loadEmploymentDetails()
@@ -109,6 +132,13 @@ public loadEmploymentDetails()
     this.typeOfEmployment=this.employmentDetails.employmentType;
 
 
+  },
+  (error) => {                              //Error callback
+    console.error('error caught in component')
+    this.errorMessage = error;
+    this.loading = false;
+
+    throw error;
   });
 
 
@@ -134,6 +164,13 @@ this.vehicleService.getVehicleById(this.vehicleId)
   this.interest=this.vehicle.interest;
 
   this.eligibilityCheckerService.setVehicleDetails(this.vehicle);
+},
+(error) => {                              //Error callback
+  console.error('error caught in component')
+  this.errorMessage = error;
+  this.loading = false;
+
+  throw error;
 });
 }
 }
@@ -185,6 +222,13 @@ console.log("i am hide Form Submitted");
     
     console.log(this.vehicleEligibility); 
     localStorage.setItem("vehicleId",this.vehicleEligibility.vehicleId.toString());
+  },
+  (error) => {                              //Error callback
+    console.error('error caught in component')
+    this.errorMessage = error;
+    this.loading = false;
+
+    throw error;
   }
   );
 

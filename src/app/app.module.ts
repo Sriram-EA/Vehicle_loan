@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -26,6 +26,8 @@ import { ThreeWheelerEligibilityCheckerComponent } from './three-wheeler-eligibi
 import { AppformComponent } from './appform/appform.component';
 import { ApprovedListComponent } from './admin-dashboard/approved-list/approved-list.component';
 import { RejectedListComponent } from './admin-dashboard/rejected-list/rejected-list.component';
+import { GlobalHttpInterceptorService } from './services/global-http-interceptor.service';
+import { GlobalErrorHandlerService } from './services/global-error-handler-service.service';
 
 
 
@@ -64,7 +66,8 @@ import { RejectedListComponent } from './admin-dashboard/rejected-list/rejected-
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS,    useClass: GlobalHttpInterceptorService,    multi: true  },
+    { provide: ErrorHandler, useClass:GlobalErrorHandlerService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

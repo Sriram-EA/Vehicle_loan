@@ -1,15 +1,8 @@
-<p>loan-details works!</p>
+<h1 class="header"> Loan EMI Details </h1>
 
 <div class="container">
 
 <form [formGroup]="loanForm" (ngSubmit)="onSubmit()" >
-
-  {{vehicleBrand}}
-  {{vehicleModel}}
-  {{vehicleType}}
-  {{interest}}
-
-
 
   <div class="form-group">
     <label for="exampleFormControlInput1">VehicleType</label>
@@ -17,13 +10,13 @@
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlInput2">VehicleBrand</label>
+    <label for="exampleFormControlInput2">Vehicle Brand</label>
     <input formControlName="vehicleBrand" type="text" class="form-control" id="formVehicleBrandId"  placeholder={{vehicleBrand}} [readonly]="readonly">
   </div>
 
 
   <div class="form-group">
-    <label for="exampleFormControlInput3">vehicleModel</label>
+    <label for="exampleFormControlInput3">Vehicle Model</label>
     <input formControlName="vehicleModel" type="text" class="form-control" id="formVehicleModelId"  placeholder={{vehicleModel}} [readonly]="readonly">
   </div>
 
@@ -71,10 +64,6 @@
     <label for="exampleFormControlInput10"><b><span style="color:#000000">EMI</span></b></label>
     <input formControlName="emiAmount" type="text" class="form-control" id="formEmiAmountId" placeholder={{emiAmount}} [readonly]="readonly">
   </div>
-  <!-- <div class="form-group" *ngIf="eligibilityStatus=='Eligible'">
-    <label for="exampleFormControlInput10">EligibilityStatus</label>
-    <input formControlName="eligibilityStatus" type="button" class="form-control" id="formEmiId" value={{eligibilityStatus}}:Congratulations!!_you_are_eligible_to_apply_for_loan...Click_on_Contine>
-  </div> -->
 
 
   <div class="form-group text-center">

@@ -1,8 +1,7 @@
-
+<h1 class="header"> Two Wheeler Eligibility Checker</h1>
 <div class="container">
 
 <form [formGroup]="addForm" (ngSubmit)="onSubmit()" >
-
 
 
 
@@ -12,13 +11,13 @@
   </div>
 
   <div class="form-group">
-    <label for="exampleFormControlInput2">VehicleType</label>
+    <label for="exampleFormControlInput2">Vehicle Type</label>
     <input formControlName="vehicleType" type="text" class="form-control" id="formVehicleTypeId"  value={{vehicleType}}heeler [readonly]="readonly">
   </div>
 
 
   <div class="form-group">
-    <label for="exampleFormControlSelect1"> <b> <span style="color:#000000"> Vehicle Brand </span> </b></label>
+    <label for="exampleFormControlSelect1"> <span style="color:#000000"> Vehicle Brand </span> </label>
     <select  formControlName="vehicleId"class="form-control" id="formSelectVehicleId" name="fourWheelerInput" (click)="change()">
       <option value="">Select Vehicle </option>
       <option *ngFor="let vehicle of twoWheelerVehicleList" value={{vehicle.vehicleId}}>
@@ -32,11 +31,11 @@
 
 
   <div class="form-group">
-    <label for="exampleFormControlInput3">VehicleShowRoomPrice</label>
+    <label for="exampleFormControlInput3">Vehicle ShowRoom Price</label>
     <input formControlName="showRoomPrice" type="text" class="form-control" id="formVehicleShowRoomPriceId"  value={{vehicleShowRoomPrice}} [readonly]="readonly">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput4">VehicleOnRoadPrice</label>
+    <label for="exampleFormControlInput4">Vehicle On Road Price</label>
     <input formControlName="onRoadPrice" type="text" class="form-control" id="formVehicleOnRoadPriceId"  value={{vehicleOnRoadPrice}} [readonly]="readonly">
   </div>
   <div class="form-group">
@@ -50,7 +49,13 @@
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput7">Gender</label>
-    <input formControlName="gender" type="text" class="form-control" id="formGenderId">
+     <select  formControlName="gender"class="form-control" id="formGenderId" name="fourWheelerInput" (click)="change()">
+      <option value="">Select Gender </option>
+      <option value="M">Male</option>
+      <option value="F">Female</option>
+      <option value="O">Others</option>
+
+    </select>
   </div>
   <div class="form-group">
     <label for="exampleFormControlInput8">Type of Employment</label>
@@ -66,20 +71,22 @@
   </div>
   <div class="form-group" *ngIf="eligibilityStatus=='Eligible'">
     <label for="exampleFormControlInput10">EligibilityStatus</label>
-    <input formControlName="eligibilityStatus" type="button" class="form-control" id="formEmiId" value={{eligibilityStatus}}:Congratulations!!_you_are_eligible_to_apply_for_loan...Click_on_Contine>
+    <input formControlName="eligibilityStatus" type="button" class="form-control" id="formEmiId" value={{eligibilityStatus}}:Congratulations!!_you_are_eligible_to_apply_for_loan...Click_on_Continue>
   </div>
-
+  <div class="form-group" *ngIf="eligibilityStatus=='Not Eligible'">
+    <label for="exampleFormControlInput10">EligibilityStatus</label>
+    <input formControlName="eligibilityStatus" type="button" class="form-control" id="formEmiId" value={{eligibilityStatus}}:Sorry!!_your_profile_is_not_eligible_to_apply_for_loan...Click_on_Back>
+  </div>
   <h6 style="color:green;" *ngIf="isSubmitted==true" id="formStatusId">Form Successfully submitted</h6>
 
   <div class="form-group text-center">
 
     <button [routerLink]="['/vehicletypes']" class="btn btn-danger" type="reset">Back</button>
     &nbsp; &nbsp;
-    <input type="submit" class="form-control" id="formSubmitButtonId" class="btn btn-success">
+    <input type="submit" class="form-control" id="formSubmitButtonId" class="btn btn-success" *ngIf="eligibilityStatus!='Eligible' && isSubmitted!=true">
     &nbsp; &nbsp;
     <a [routerLink]="['/loanDetails']" class="btn btn-warning" *ngIf="eligibilityStatus=='Eligible'" routerLinkActive="active">Continue</a>
 
-    <!-- <a [routerLink]="['/loanDetails']" class="btn btn-primary active" role="button" routerLinkActive="active">Loan Details</a> -->
   </div>
 </form>
 

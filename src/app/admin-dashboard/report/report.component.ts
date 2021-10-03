@@ -20,7 +20,8 @@ export class ReportComponent implements OnInit {
   status: boolean;
   updateStatusApproved: boolean;
   updateStatusRejected: boolean;
-  appStatus: ApplicationStatus;
+  appStatus: ApplicationStatus; 
+  buttonClicked:boolean;
   constructor(private router: Router, private adminService: AdminService, private ar: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -33,7 +34,8 @@ export class ReportComponent implements OnInit {
     });
   }
 
-  approve() {
+  approve() { 
+    this.buttonClicked=true;
     this.sub = this.ar.paramMap.subscribe(params => {
       this.id = params.get('id');
       console.log("id received in Approve componenet : " + this.id);
@@ -57,7 +59,8 @@ export class ReportComponent implements OnInit {
     });
 
   }
-  reject() {
+  reject() { 
+    this.buttonClicked=true;
     this.sub = this.ar.paramMap.subscribe(params => {
       this.id = params.get('id');
       console.log("id received in Reject componenet : " + this.id);

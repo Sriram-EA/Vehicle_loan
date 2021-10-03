@@ -34,7 +34,8 @@ export class LoanDetailsComponent implements OnInit {
   minimumPrincipleAmount: Number = 0;
   maximumPrincipleAmount: Number = 0;
   loanEmiDetails: LoanEmiDetails; 
-  onSubmitted:boolean;
+  onSubmitted:boolean; 
+  principleRangeError:boolean=false;
   constructor(private fb: FormBuilder, private eligibilityCheckerService: EligibilityCheckerService) {
   }
 
@@ -65,7 +66,17 @@ export class LoanDetailsComponent implements OnInit {
   }
 
   public change() {
+    
+    if(!(this.loanForm.value.principle>=this.minimumPrincipleAmount&&this.loanForm.value.principle<=this.maximumPrincipleAmount))
+    {
 
+      this.principleRangeError=true;
+  return;
+    }
+    else
+    {
+      this.principleRangeError=false;
+    }
     if (this.principle != 0) {
 
 

@@ -7,7 +7,7 @@
       <div *ngIf="error1display">{{error1}}</div> 
       <div *ngIf="error2display">{{error2}}</div>
           <div class="form-group">
-              <label for="emailId">Email address:</label>
+              <label for="emailId">Email address</label>
               <input type="email" formControlName="emailId" placeholder="Email" name="emailId" class="form-control" id="emailId" required>
               <div *ngIf="submitted && addForm.controls.emailId.errors" class="danger">
                     <div class="text-danger" *ngIf="addForm.controls.emailId.errors.required">Email is required
@@ -16,7 +16,7 @@
             </div>
 
       <div class="form-group">
-              <label for="password">Password :</label>
+              <label for="password">Password </label>
               <input type="password" formControlName="password" placeholder="password" name="password" class="form-control" id="password" required>
               <div *ngIf="submitted && addForm.controls.password.errors" class="danger">
             <div class="text-danger" *ngIf="addForm.controls.password.errors.required">Password is required

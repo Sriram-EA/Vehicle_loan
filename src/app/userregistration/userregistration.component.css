@@ -34,10 +34,8 @@
     /* flex: 0 0 auto; */ 
     margin-left:25%;
     width: 45%;
-    background-color: rgb(241, 241, 102); 
-    border-style: outset;
-    border-width: 7px;
-    border-color: #74564b;
+    background-color: rgb(177, 207, 247);
+
 }
 label
 {
@@ -74,4 +72,7 @@ label
 { 
     color:green;
     margin-left:35%;
+}
+label {
+    color: black;
 }

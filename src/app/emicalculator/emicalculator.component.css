@@ -50,10 +50,7 @@ label
 .col-md-6 {
     /* flex: 0 0 auto; */
     width: 50%;
-    background-color: rgb(230, 230, 97); 
-    border-style: outset;
-    border-width: 7px;
-    border-color: #74564b;
+    background-color: rgb(177, 207, 247);
 }
 
 label

@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { EligibilityChecker } from '../EligibilityChecker';
 import { LoanEmiDetails } from '../LoanEmiDetails';
 import { Vehicle } from '../Vehicle';
@@ -23,7 +25,13 @@ export class EligibilityCheckerService {
     console.log(user);
 
     console.log(this.http.post<EligibilityChecker>(this.baseUrl+"/eligibilityChecker",user));
-    return this.http.post<EligibilityChecker>(this.baseUrl+"/eligibilityChecker",user);
+    return this.http.post<EligibilityChecker>(this.baseUrl+"/eligibilityChecker",user)
+    .pipe(
+      catchError((err) => {
+        console.log('error caught in service')
+        console.error(err);
+        return throwError(err);
+      }));
 
 
 
