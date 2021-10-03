@@ -15,7 +15,7 @@ export class ApplicationStatus
     state:string="";
    pincode:string="";
     status:string="";
-   approvalDate:string="";
+   approvalDate:Date;
     adminId:number=0;
     user!: UserRegistration;
     vehicle!: Vehicle;

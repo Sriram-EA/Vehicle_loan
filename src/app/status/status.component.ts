@@ -8,7 +8,8 @@ import { ShowstatusService } from '../services/showstatus.service';
   styleUrls: ['./status.component.css']
 })
 export class StatusComponent implements OnInit {
-  constructor(private statusService : ShowstatusService) { }
+  constructor(private statusService : ShowstatusService) { } 
+  status:string;
 
   empstatus: ApplicationStatus[]=[];
  ngOnInit(): void {

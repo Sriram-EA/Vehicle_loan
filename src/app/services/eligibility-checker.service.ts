@@ -58,14 +58,16 @@ public setVehicleDetails(vehicleDetails:Vehicle)
 
 public setLoanEmiDetails(loanEmiDetails:LoanEmiDetails)
 {
-
+  console.log(this.loanEmiDetails);
   this.loanEmiDetails=loanEmiDetails;
 
 }
 
 public getLoanEmiDetails()
-{
-return this.loanEmiDetails;                       // loanEmiDetails.tenure
+{ 
+  console.log(this.loanEmiDetails);
+return this.loanEmiDetails;                       // loanEmiDetails.tenure 
+
 
 }
 

@@ -17,7 +17,7 @@
 
       <div class="form-group">
               <label for="password">Password :</label>
-              <input type="text" formControlName="password" placeholder="password" name="password" class="form-control" id="password" required>
+              <input type="password" formControlName="password" placeholder="password" name="password" class="form-control" id="password" required>
               <div *ngIf="submitted && addForm.controls.password.errors" class="danger">
             <div class="text-danger" *ngIf="addForm.controls.password.errors.required">Password is required
           </div>

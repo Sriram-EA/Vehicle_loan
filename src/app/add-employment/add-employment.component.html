@@ -1,17 +1,17 @@
 <div class="wrapper">
     <div class="sidebar">
-        <h6>User Dashboard</h6>
+        <h6> <i class="fas fa-home"></i><a [routerLink]="['/user-dashboard']" style="color: rgb(241, 239, 231);"> User Dashboard</a> </h6>
         <ul>
-            <li><a [routerLink]="['/addemp']"> <i class="fas fa-home"></i>Add/Update your Employment Details</a></li>
+            <li><a [routerLink]="['/addemp']"> <i class="fa fa-book fa-fw"></i> Add/Update your Employment Details</a></li>
             <li><a class="appstatus" [routerLink]="['/status']"><i class="fas fa-user"></i>Application Status </a></li>
-            <li><a [routerLink]="['/addbank']"><i class="fas fa-user"></i>Add Bank Details</a></li>
-            <li><a class="bankdetails" [routerLink]="['/updatebank']"><i class="fas fa-project-diagram"></i>Update Bank
+            <li><a [routerLink]="['/addbank']"><i class="fas fa-briefcase"></i> Add Bank Details</a></li>
+            <li><a class="bankdetails" [routerLink]="['/updatebank']"><i class="far fa-address-book"></i>  Update Bank
                     Details<br> </a></li>
-            <li><a [routerLink]="['/vehicletypes']"><i class="fas fa-blog"></i>Apply Loan</a></li>
+            <li><a [routerLink]="['/vehicletypes']"><i class="fas fa-chart-line"></i>Apply Loan</a></li>
             <li><a class="bankdetails" [routerLink]="['/aboutus']"><i class="fas fa-address-book"></i>About us</a></li>
         </ul>
     </div>
-  </div>
+</div>
   
 <div class="card border-primary mb-3" style="max-width: 50rem; ">
     <div class="card-body text-primary">

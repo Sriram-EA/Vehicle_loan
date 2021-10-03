@@ -12,7 +12,7 @@ import { Vehicle } from '../Vehicle';
 })
 export class LoanDetailsComponent implements OnInit {
   vehicleEligibility!: EligibilityChecker;
-  vehicleType!: String;
+  vehicleType: String;
   vehicleBrand!: String;
   vehicleModel!: String;
   vehicleOnRoadPrice: number = 0
@@ -28,12 +28,13 @@ export class LoanDetailsComponent implements OnInit {
   eligibilityStatus!: String;
   readonly: boolean = true;
   isSubmitted: boolean = false;
-  loanForm!: FormGroup;
+  loanForm: FormGroup;
   principle: Number = 0;
   tenureForEmiCalculation: Number = 0;
   minimumPrincipleAmount: Number = 0;
   maximumPrincipleAmount: Number = 0;
-  loanEmiDetails!: LoanEmiDetails;
+  loanEmiDetails: LoanEmiDetails; 
+  onSubmitted:boolean;
   constructor(private fb: FormBuilder, private eligibilityCheckerService: EligibilityCheckerService) {
   }
 
@@ -109,22 +110,21 @@ export class LoanDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    
+     
+    this.onSubmitted=true;
     this.loanForm.get('vehicleType')?.setValue(this.vehicleType);
     this.loanForm.get('vehicleBrand')?.setValue(this.vehicleBrand);
     this.loanForm.get('vehicleModel')?.setValue(this.vehicleModel);
     this.loanForm.get('interest')?.setValue(this.interest);
+    this.loanForm.get('emiAmount')?.setValue(this.emiAmount);
+    console.log("I am before if in loan details component");
 
 
-    if (this.loanForm.invalid) {
-      return;
-    }
-
-
-    this.loanEmiDetails.tenure = this.loanForm.value.tenure;
-    this.loanEmiDetails.principle = this.loanForm.value.principle;
-    this.loanEmiDetails.emi = this.loanForm.value.emi;
-    this.eligibilityCheckerService.setLoanEmiDetails(this.loanEmiDetails);
+    console.log(this.loanForm.value);
+    this.loanEmiDetails={tenure:this.loanForm.value.tenure,principle:this.loanForm.value.principle,emi:this.loanForm.value.emiAmount};
+    this.eligibilityCheckerService.setLoanEmiDetails(this.loanEmiDetails); 
+    console.log("I am in onSubmit"); 
+    console.log(this.loanEmiDetails);
 
   }
 

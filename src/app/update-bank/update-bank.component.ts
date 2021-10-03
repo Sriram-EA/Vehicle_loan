@@ -34,12 +34,12 @@ export class UpdateBankComponent implements OnInit {
   {
     console.log("Inside bank Service"); 
     console.log(localStorage.getItem("userID"));
-    this.loadservice.load(Number(localStorage.getItem("userID")))  
+    this.loadservice.load(Number(localStorage.getItem("bankId")))  
     .subscribe(response=>{this.ifscCode=response.ifscCode,this.accountNumber=response.accountNumber,this.bankBranch=response.bankBranch});
   }
   onSubmit(value:string){
     console.log("Component",value);
-    this.updateservice.updateBankById(this.updatebankForm.value,Number(localStorage.getItem("userID"))).subscribe(data =>{});
+    this.updateservice.updateBankById(this.updatebankForm.value,Number(localStorage.getItem("bankId"))).subscribe(data =>{});
     this.updatebankForm.reset();
   }
   }

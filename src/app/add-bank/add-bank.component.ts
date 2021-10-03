@@ -13,7 +13,7 @@ export class AddBankComponent implements OnInit {
   addbankForm: FormGroup;
   userId: number;
   bankId: number;
-  constructor(private fb: FormBuilder, private addempService: AddbankService, private r: Router, private addBankService: AddbankService) { }
+  constructor(private fb: FormBuilder, private addempService: AddbankService, private router: Router, private addBankService: AddbankService) { }
   ngOnInit(): void {
 
     this.userId = Number(localStorage.getItem("userID"));
@@ -32,20 +32,26 @@ export class AddBankComponent implements OnInit {
     this.addempService.addBankById(this.addbankForm.value, this.userId)
       .subscribe(
         data => { 
-          console.log("inside add Emp Service");
+          console.log("inside add Emp Service"); 
+          this.localStorage(); 
+          
         }
-      ) 
-      
+      )  
+      alert("Bank Details Added Successfully"); 
+      this.router.navigate(['user-dashboard']);
       console.log("inside add Emp Service");
-
-      this.addBankService.getBankIdByUserId(this.userId)
+    this.addbankForm.reset();
+  } 
+  localStorage()
+  { 
+    this.addBankService.getBankIdByUserId(this.userId)
             .subscribe(
               data => {
                 this.bankId = data.bankId;  
                 console.log("inside addbankservice");
                 localStorage.setItem("bankId",this.bankId.toString());
               }
-            );
-    this.addbankForm.reset();
+    );
+
   }
 }

@@ -24,6 +24,8 @@ import { VehicleTypesComponent } from './vehicle-types/vehicle-types.component';
 import { TwoWheelerEligibilityCheckerComponent } from './two-wheeler-eligibility-checker/two-wheeler-eligibility-checker.component';
 import { ThreeWheelerEligibilityCheckerComponent } from './three-wheeler-eligibility-checker/three-wheeler-eligibility-checker.component';
 import { AppformComponent } from './appform/appform.component';
+import { ApprovedListComponent } from './admin-dashboard/approved-list/approved-list.component';
+import { RejectedListComponent } from './admin-dashboard/rejected-list/rejected-list.component';
 
 
 
@@ -52,6 +54,8 @@ import { AppformComponent } from './appform/appform.component';
     TwoWheelerEligibilityCheckerComponent,
     ThreeWheelerEligibilityCheckerComponent,
     AppformComponent,
+    ApprovedListComponent,
+    RejectedListComponent,
   ],
   imports: [
     BrowserModule,

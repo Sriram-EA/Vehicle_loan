@@ -29,7 +29,35 @@ export class AdminService {
   // base url to be different:IMPORTANT
 
 
-  // /applicationform/admin
+  // /applicationform/admin 
+
+  public updateStatusApproved(applicationId: number):Observable<boolean>
+  { 
+    const body={title: 'Angular PUT Request'};
+    console.log(this.http.put<boolean>(this.baseUrl1+'/updatestatus/'+applicationId,body));
+    return this.http.put<boolean>(this.baseUrl1+'/updatestatus/'+applicationId,body);
+  }
+  
+  public updateStatusReject(applicationId: number):Observable<boolean>
+  { 
+    const body={title: 'Angular PUT Request'};
+    console.log(this.http.put<boolean>(this.baseUrl1+'/rejectstatus/applicationId',body));
+    return this.http.put<boolean>(this.baseUrl1+'/rejectstatus/'+applicationId,body);
+  }
+
+  public getApprovedList() {
+
+    console.log(this.http.get<any[]>(this.baseUrl1+'/approvereport'));
+    return this.http.get<any[]>(this.baseUrl1+'/approvereport');
+    
+  } 
+
+  public getRejectedList() {
+
+    console.log(this.http.get<any[]>(this.baseUrl1+'/rejectreport'));
+    return this.http.get<any[]>(this.baseUrl1+'/rejectreport');
+    
+  }
   
 
 }

@@ -1,0 +1,34 @@
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Application ID</th>
+                <th>First Name</th>
+                <th>LastName</th>
+                <th>Employment Type</th>
+                <th>Annual Salary</th>
+                <th>Vehicle Type</th>
+                <th>Vehicle Brand</th>
+                <th>Vehicle Model</th>
+                <th>EMI Opted</th>
+                <th>Account Type</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let a of approveObj;">
+                <td> {{a.applicationId}} </td>
+                <td> {{a.userRegistration.firstName}} </td>
+                <td> {{a.userRegistration.lastName}} </td>
+                <td> {{a.emp.employmentType}} </td>
+                <td> {{a.emp.annualSalary}} </td>
+                <td> {{a.vehicle.vehicleType}} </td>
+                <td> {{a.vehicle.vehicleBrand}} </td>
+                <td> {{a.vehicle.vehicleModel}} </td>
+                <td> {{a.emis.emi}} </td>
+                <td> {{a.bank.accountType}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div> 
+<a [routerLink]="['/admin-dashboard']" class="btn btn-primary active back" role="button" routerLinkActive="active">Back</a>

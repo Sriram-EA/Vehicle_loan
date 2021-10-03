@@ -5,6 +5,8 @@ import { AddBankComponent } from './add-bank/add-bank.component';
 import { AddEmploymentComponent } from './add-employment/add-employment.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ApplidListComponent } from './admin-dashboard/applid-list/applid-list.component';
+import { ApprovedListComponent } from './admin-dashboard/approved-list/approved-list.component';
+import { RejectedListComponent } from './admin-dashboard/rejected-list/rejected-list.component';
 import { ReportComponent } from './admin-dashboard/report/report.component';
 import { AppformComponent } from './appform/appform.component';
 import { EligibilityChecker } from './EligibilityChecker';
@@ -44,7 +46,9 @@ const routes: Routes = [
   {path:'twowheelereligibilitychecker',component:TwoWheelerEligibilityCheckerComponent},
   {path:'threewheelereligibilitychecker',component:ThreeWheelerEligibilityCheckerComponent}, 
   {path:'fourwheelereligibilitychecker',component:FourWheelerEligibilityCheckerComponent},
-  {path:'applicationform',component:AppformComponent}
+  {path:'applicationform',component:AppformComponent},
+  {path:'approvedlist',component:ApprovedListComponent},
+  {path:'rejectedlist',component:RejectedListComponent}
 ];
 
 @NgModule({

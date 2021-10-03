@@ -54,7 +54,8 @@ export class UserregistrationComponent implements OnInit {
             this.userService.createUser(this.addForm.value)		  		
             .subscribe();  
             this.registrationDisplay=true; 
-            this.emailDisplay=false; 
+            this.emailDisplay=false;   
+            alert("Registration Successfull")
             this.router.navigate(['login']);
           }
           else {  

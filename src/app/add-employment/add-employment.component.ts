@@ -13,7 +13,7 @@ export class AddEmploymentComponent implements OnInit {
   addForm:FormGroup;
   userId:number=Number(localStorage.getItem("userID")); 
   employmentId:number;
-  constructor(private fb: FormBuilder,private addempService : AddempService,private r:Router, private employmentService:EmploymentDetailsService) { }
+  constructor(private fb: FormBuilder,private addempService : AddempService,private r:Router, private employmentService:EmploymentDetailsService,private router:Router) { }
   ngOnInit(): void {
 
     this.addForm=this.fb.group({
@@ -25,15 +25,14 @@ export class AddEmploymentComponent implements OnInit {
   }
   onSubmit(value:string){
     console.log("Component",value);
-    this.addempService.addEmpById(this.addForm.value,this.userId).subscribe(data =>{}); 
-    this.employmentService.getEmploymentDetails(this.userId)
-    .subscribe(
-      data=>
-      {
-        this.employmentId=data.employmentId; 
-        localStorage.setItem("employmentId",this.employmentId.toString());
-      }
-    )
+    this.addempService.addEmpById(this.addForm.value,this.userId)
+    .subscribe(data =>{ 
+      
+    });  
+    alert("Employment Details Added Successfully");  
+    this.router.navigate(['user-dashboard']);
+    
+    
     this.addForm.reset();
   }
   }
