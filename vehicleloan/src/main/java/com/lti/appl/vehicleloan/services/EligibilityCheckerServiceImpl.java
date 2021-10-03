@@ -28,18 +28,35 @@ public class EligibilityCheckerServiceImpl implements EligibilityCheckerService 
 					&& (eligibilityInputDetails.getTypeOfEmployment().equalsIgnoreCase("Others") && eligibilityInputDetails.getAnnualIncome() >= 180000))
 					))
 			{
+				if(eligibilityInputDetails.getGender().equals("M")&&eligibilityInputDetails.getExistingEmi()*6<eligibilityInputDetails.getAnnualIncome())
+				{
 				
 				
 				eligibilityInputDetails.setEligibilityStatus("Eligible");
-				return eligibilityInputDetails;
-			}
+				
+			return eligibilityInputDetails;
+				}
+				else if(eligibilityInputDetails.getGender().equals("F")&&eligibilityInputDetails.getExistingEmi()*6<eligibilityInputDetails.getAnnualIncome())
+				{
+					eligibilityInputDetails.setEligibilityStatus("Eligible");
+					
+					return eligibilityInputDetails;
+					
+				}
+				else if(eligibilityInputDetails.getGender().equals("O")&&eligibilityInputDetails.getExistingEmi()*5<eligibilityInputDetails.getAnnualIncome())
+				{
+                    eligibilityInputDetails.setEligibilityStatus("Eligible");
+					
+					return eligibilityInputDetails;
+				}
+				}
 			
 		}
 		else if(eligibilityInputDetails.getVehicleType().equals("3W"))
 			{
 				
 				if((eligibilityInputDetails.getAge() >= 21 && eligibilityInputDetails.getAge() <= 60 
-						&& (eligibilityInputDetails.getTypeOfEmployment().equalsIgnoreCase("Private") && eligibilityInputDetails.getAnnualIncome() >= 200000))
+						&& (eligibilityInputDetails.getTypeOfEmployment().equalsIgnoreCase("Private") && eligibilityInputDetails.getAnnualIncome() >= 300000))
 						|| ((eligibilityInputDetails.getAge() >= 18 && eligibilityInputDetails.getAge() <= 65
 						&& (eligibilityInputDetails.getTypeOfEmployment().equalsIgnoreCase("Entrepreneur") && eligibilityInputDetails.getAnnualIncome() >= 400000)))
 						|| ((eligibilityInputDetails.getAge() >= 18 && eligibilityInputDetails.getAge() <= 60 
@@ -48,8 +65,29 @@ public class EligibilityCheckerServiceImpl implements EligibilityCheckerService 
 						&& (eligibilityInputDetails.getTypeOfEmployment().equalsIgnoreCase("Others") && eligibilityInputDetails.getAnnualIncome() >= 250000)))
 						)
 				{
-				eligibilityInputDetails.setEligibilityStatus("Eligible");
-				return eligibilityInputDetails;
+					if(eligibilityInputDetails.getExistingEmi()*12<eligibilityInputDetails.getAnnualIncome())
+						if(eligibilityInputDetails.getGender().equals("M")&&eligibilityInputDetails.getExistingEmi()*6<eligibilityInputDetails.getAnnualIncome())
+						{
+						
+						
+						eligibilityInputDetails.setEligibilityStatus("Eligible");
+						
+					return eligibilityInputDetails;
+						}
+						else if(eligibilityInputDetails.getGender().equals("F")&&eligibilityInputDetails.getExistingEmi()*6<eligibilityInputDetails.getAnnualIncome())
+						{
+							eligibilityInputDetails.setEligibilityStatus("Eligible");
+							
+							return eligibilityInputDetails;
+							
+						}
+						else if(eligibilityInputDetails.getGender().equals("O")&&eligibilityInputDetails.getExistingEmi()*5<eligibilityInputDetails.getAnnualIncome())
+						{
+		                    eligibilityInputDetails.setEligibilityStatus("Eligible");
+							
+							return eligibilityInputDetails;
+						}
+						
 				
 				}
 				
@@ -67,8 +105,28 @@ public class EligibilityCheckerServiceImpl implements EligibilityCheckerService 
 						&& ((eligibilityInputDetails.getTypeOfEmployment().equalsIgnoreCase("Others") && eligibilityInputDetails.getAnnualIncome() >= 400000)))
 						)
 				{
-				eligibilityInputDetails.setEligibilityStatus("Eligible");
+					if(eligibilityInputDetails.getGender().equals("M")&&eligibilityInputDetails.getExistingEmi()*6<eligibilityInputDetails.getAnnualIncome())
+					{
+					
+					
+					eligibilityInputDetails.setEligibilityStatus("Eligible");
+					
 				return eligibilityInputDetails;
+					}
+					else if(eligibilityInputDetails.getGender().equals("F")&&eligibilityInputDetails.getExistingEmi()*6<eligibilityInputDetails.getAnnualIncome())
+					{
+						eligibilityInputDetails.setEligibilityStatus("Eligible");
+						
+						return eligibilityInputDetails;
+						
+					}
+					else if(eligibilityInputDetails.getGender().equals("O")&&eligibilityInputDetails.getExistingEmi()*5<eligibilityInputDetails.getAnnualIncome())
+					{
+	                    eligibilityInputDetails.setEligibilityStatus("Eligible");
+						
+						return eligibilityInputDetails;
+					}
+					
 				
 				}
 			
@@ -76,12 +134,7 @@ public class EligibilityCheckerServiceImpl implements EligibilityCheckerService 
 			
 			
 			
-		
-		
-		
-
 		eligibilityInputDetails.setEligibilityStatus("Not Eligible");
 		return eligibilityInputDetails;
 		}
-
 }

@@ -1,5 +1,7 @@
 package com.lti.appl.vehicleloan.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -36,14 +38,20 @@ public class ReportDaoImpl implements ReportDao{
 		String employmentType=a.getEmp().getEmploymentType();
 		int annualSalary=a.getEmp().getAnnualSalary();
 		int emi=a.getEmi().getEmi();
-		String accountType=a.getBank().getAccountType(); 
+		String accountType=a.getBank().getAccountType();  
+		String status=a.getStatus();
 		System.out.println("firstname"+firstName);
 		System.out.println("lastname"+lastName);
 		System.out.println("email"+email);
 				
 		
-	    Report report=new Report(firstName,lastName,email,vehicleType,vehicleBrand,vehicleModel,employmentType,annualSalary,emi,accountType);
+	    Report report=new Report(firstName,lastName,email,vehicleType,vehicleBrand,vehicleModel,employmentType,annualSalary,emi,accountType,status);
 		return report;
-	}
+	    
+	} 
+	
+	
+
+	
 
 }

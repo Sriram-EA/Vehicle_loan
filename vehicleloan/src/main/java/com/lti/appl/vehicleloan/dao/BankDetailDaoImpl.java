@@ -69,30 +69,32 @@ public class BankDetailDaoImpl implements BankDetailDao {
 
 	@Override
 	public String updateBank(AccountType acc, int userId) {
-		UserRegistration ur = em.find(UserRegistration.class, userId);
-		String str = "Select b from BankDetail b where b.userId.userID=:userId";
+		BankDetail b = em.find(BankDetail.class, userId);
+		String str = "Select b from BankDetail b where b.userID=:userId";
 		Query qry = em.createQuery(str);
 		qry.setParameter("userId", userId);
-		//BankDetail bank = (BankDetail) qry.getSingleResult(); 
-		List<BankDetail> bankList=qry.getResultList(); 
-	//	BankDetail bank=bankList.get(bankList.size()-1); 
-		BankDetail bank=(BankDetail) qry.setFirstResult(1);
-		System.out.println("Bank"+bank);
-		bank.setAccountType(acc.getAccountType());
-		em.merge(bank);
-		System.out.println(bank);
-		return "Bank Updated";
 		
+		System.out.println("Bank"+b);
+		b.setAccountType(acc.getAccountType());
+		em.merge(b);
+		System.out.println(b);
+		return "Bank Updated";
 	}
 
 	@Override
 	public BankDetail getBankByUserId(int userId) {
 		
-		String str="select b from BankDetail b where b.userId.userID="+userId; 
+		String str="select b from BankDetail b where b.userId.userID="+userId+" order by b.bankId"; 
 		Query qry=em.createQuery(str);
 	
 		List<BankDetail> bankList=qry.getResultList();  
-		System.out.println(bankList.toString());
+		System.out.println(bankList.toString()); 
+		if(bankList.size()==0)
+		{ 
+			BankDetail b=new BankDetail(); 
+			System.out.println(b);
+			 return b;
+		} 
 		BankDetail updatedBankDetails=bankList.get(bankList.size()-1);  
 
 		System.out.println(updatedBankDetails);

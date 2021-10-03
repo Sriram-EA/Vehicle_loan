@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lti.appl.vehicleloan.beans.ApplicationDetails;
 import com.lti.appl.vehicleloan.beans.ApplicationForm;
 import com.lti.appl.vehicleloan.beans.FetchDetail;
+import com.lti.appl.vehicleloan.beans.Report;
 import com.lti.appl.vehicleloan.services.ApplicationFormService;
 import com.lti.appl.vehicleloan.services.ApplicationFormServiceImpl;
 
@@ -80,7 +82,39 @@ public class ApplicationFormController {
 	public String fill(@RequestBody ApplicationDetails app,@PathVariable(value="userid") int userId ,@PathVariable(value="vehicleid") int vehicleId,@PathVariable(value="empid") int empId,@PathVariable(value="bankid") int bankId,@PathVariable(value="principle") int principle,@PathVariable(value="tenure") int tenure,@PathVariable(value="emi") int emi)
 	{
 		return applicationService.fill(app,userId,vehicleId,empId,bankId,principle,tenure,emi);
+	} 
+	
+	// Sonali's Part
+	
+	@PutMapping("/updatestatus/{id}") 
+	public Boolean updateStatusApprove(@PathVariable(value="id") int applicationId)
+	{
+		Boolean status=applicationService.updateStatusApprove(applicationId);
+		return status;
 	}
 	
+	@PutMapping("/rejectstatus/{id}") 
+	public Boolean updateStatusReject(@PathVariable(value="id") int applicationId)
+	{
+		Boolean status=applicationService.updateStatusReject(applicationId);
+		return status;
+	} 
 	
+	// Sonali's Part 
+	
+	@GetMapping("/approvereport") 
+	public List<ApplicationForm> getApprovedList()
+	{
+		List<ApplicationForm> listApprove=applicationService.getApprovedList(); 
+		System.out.println(listApprove);
+		return listApprove;
+	} 
+	
+	@GetMapping("/rejectreport") 
+	public List<ApplicationForm> getRejectedList()
+	{
+		List<ApplicationForm> listReject=applicationService.getRejectedList(); 
+		System.out.println(listReject);
+		return listReject;
+	}
 }

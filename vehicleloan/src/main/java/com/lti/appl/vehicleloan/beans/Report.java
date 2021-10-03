@@ -12,12 +12,18 @@ public class Report {
     private int annualSalary;
     private int emi;
 	private String accountType;
+	private String status; 
 	
-	public Report(String firstName, String lastName, String emailId, String vehicleType,
-			String vehicleBrand, String vehicleModel, String employmentType, int annualSalary, int emi,
-			String accountType) {
+	
+	public Report() {
 		super();
-		
+	}
+	
+	
+	
+	public Report(String firstName, String lastName, String emailId, String vehicleType, String vehicleBrand,
+			String vehicleModel, String employmentType, int annualSalary, int emi, String accountType, String status) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
@@ -28,12 +34,11 @@ public class Report {
 		this.annualSalary = annualSalary;
 		this.emi = emi;
 		this.accountType = accountType;
+		this.status = status;
 	}
-	public Report() {
-		super();
-	}
-	
-	
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -94,14 +99,29 @@ public class Report {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Report [applicationId=" + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailId=" + emailId + ", vehicleType=" + vehicleType + ", vehicleBrand=" + vehicleBrand
-				+ ", vehicleModel=" + vehicleModel + ", employmentType=" + employmentType + ", annualSalary="
-				+ annualSalary + ", emi=" + emi + ", accountType=" + accountType + "]";
+		return "Report [firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId + ", vehicleType="
+				+ vehicleType + ", vehicleBrand=" + vehicleBrand + ", vehicleModel=" + vehicleModel
+				+ ", employmentType=" + employmentType + ", annualSalary=" + annualSalary + ", emi=" + emi
+				+ ", accountType=" + accountType + ", status=" + status + "]";
 	}
-	
-	
+
+
+
 
 }

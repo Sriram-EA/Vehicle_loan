@@ -1,5 +1,6 @@
 package com.lti.appl.vehicleloan.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import com.lti.appl.vehicleloan.beans.BankDetail;
 import com.lti.appl.vehicleloan.beans.EmiDetail;
 import com.lti.appl.vehicleloan.beans.Employment;
 import com.lti.appl.vehicleloan.beans.FetchDetail;
+import com.lti.appl.vehicleloan.beans.Report;
 import com.lti.appl.vehicleloan.beans.UserRegistration;
 import com.lti.appl.vehicleloan.beans.Vehicle;
 
@@ -112,13 +114,92 @@ public class ApplicationFormDaoImpl implements ApplicationFormDao {
 		appl.setVehicle(vh);
 		appl.setEmi(ed);
 		appl.setEmp(emp);
-		appl.setBank(bd);
+		appl.setBank(bd); 
+		appl.setStatus("PENDING");
 		System.out.println("App"+appl);
 		em.persist(appl);
-		
-		
 		return "Application Uploaded";
+	} 
 	
+	// Sonali's Part 
+	
+	@Transactional
+	@Override
+	public Boolean updateStatusApprove(int applicationId) {
+		
+			// TODO Auto-generated method stub
+		    java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+			ApplicationForm updateStatusApprove=em.find(ApplicationForm.class,applicationId);
+			
+			String updateString="update ApplicationForm set status=:status where applicationId=:applicationId";	
+			Query qry=em.createQuery(updateString);
+			qry.setParameter("status","APPROVED");
+			qry.setParameter("applicationId",applicationId);
+			int i=qry.executeUpdate();
+			
+			String updateApprovalDate="update ApplicationForm set approvalDate=:approvalDate where applicationId=:applicationId";
+			Query q=em.createQuery(updateApprovalDate);
+			q.setParameter("approvalDate",date);
+			q.setParameter("applicationId",applicationId);
+			int j=q.executeUpdate();  
+			
+			String emi="select a from ApplicationForm a where a.applicationId="+ applicationId;
+			Query emiQry=em.createQuery(emi);
+			ApplicationForm a=(ApplicationForm) emiQry.getSingleResult(); 
+			int emiId=a.getEmi().getEmiId();
+			
+			EmiDetail emiDetail=em.find(EmiDetail.class,emiId);
+			emiDetail.setEmiStartDate(date); 
+			em.merge(emiDetail);
+			
+			if(i==1 && j==1)
+			return true;
+		return false;
 	}
-
+ 
+	@Transactional
+	@Override
+	public Boolean updateStatusReject(int applicationId) {
+		
+		
+		ApplicationForm updateStatusReject=em.find(ApplicationForm.class,applicationId);	
+		String updateString="update ApplicationForm set status=:status where applicationId=:applicationId";
+		
+		Query qry=em.createQuery(updateString);
+		
+		
+		qry.setParameter("status","REJECTED");
+		qry.setParameter("applicationId",applicationId);
+		int i=qry.executeUpdate(); 
+		
+		String updateApprovalDate="update ApplicationForm set approvalDate=:approvalDate where applicationId=:applicationId";
+		Query q=em.createQuery(updateApprovalDate);
+		q.setParameter("approvalDate",null);
+		q.setParameter("applicationId",applicationId);
+		int j=q.executeUpdate();
+		
+		if(i==1 && j==1)
+		return true;
+		return false;
+	} 
+	
+	@Override
+	public List<ApplicationForm> getApprovedList() {
+		String sql="select a from ApplicationForm a where a.status=:status";
+		Query qry=em.createQuery(sql);
+		qry.setParameter("status", "APPROVED");
+		List<ApplicationForm> rep=qry.getResultList();
+		
+		return rep;
+	} 
+	
+	@Override
+	public List<ApplicationForm> getRejectedList() {
+		String sql="select a from ApplicationForm a where a.status=:status";
+		Query qry=em.createQuery(sql);
+		qry.setParameter("status", "REJECTED");
+		List<ApplicationForm> rep=qry.getResultList();
+		
+		return rep;
+	}
 }

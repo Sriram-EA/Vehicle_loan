@@ -61,6 +61,7 @@ public class BankDetailController {
 		{
 			BankDetail bankDetails=bankDetailService.getBankByUserId(userId);
 			return bankDetails;
-		}
-	
+		} 
+	  
+	  
 }

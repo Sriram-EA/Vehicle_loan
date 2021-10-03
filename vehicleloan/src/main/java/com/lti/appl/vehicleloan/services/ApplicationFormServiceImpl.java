@@ -13,6 +13,7 @@ import com.lti.appl.vehicleloan.beans.BankDetail;
 import com.lti.appl.vehicleloan.beans.EmiDetail;
 import com.lti.appl.vehicleloan.beans.Employment;
 import com.lti.appl.vehicleloan.beans.FetchDetail;
+import com.lti.appl.vehicleloan.beans.Report;
 import com.lti.appl.vehicleloan.beans.UserRegistration;
 import com.lti.appl.vehicleloan.beans.Vehicle;
 import com.lti.appl.vehicleloan.dao.ApplicationFormDao;
@@ -61,6 +62,34 @@ public class ApplicationFormServiceImpl implements ApplicationFormService {
 			int tenure, int emi) {
 		// TODO Auto-generated method stub
 		return applicationFormDao.fill(app, userId, vehicleId, empId, bankId, principle, tenure, emi);
+	} 
+	
+	// Sonali's Part 
+	
+	@Override
+	public Boolean updateStatusApprove(int applicationId) {
+		
+		Boolean s=applicationFormDao.updateStatusApprove(applicationId);
+		return s;
+	}
+
+	
+	@Override
+	public Boolean updateStatusReject(int applicationId) {
+		Boolean s=applicationFormDao.updateStatusReject(applicationId);
+		return s;
+	} 
+	
+	@Override
+	public List<ApplicationForm> getApprovedList() {
+		
+		return applicationFormDao.getApprovedList();
+	}
+ 
+	@Override
+	public List<ApplicationForm> getRejectedList() 
+	{
+		return applicationFormDao.getRejectedList();
 	}
 
 }

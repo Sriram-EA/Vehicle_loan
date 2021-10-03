@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.lti.appl.vehicleloan.beans.BankDetail;
 import com.lti.appl.vehicleloan.beans.Employment;
 import com.lti.appl.vehicleloan.beans.UserRegistration;
 
@@ -74,9 +75,16 @@ public class EmploymentDaoImpl implements EmploymentDao{
 		String str="select e from Employment e where e.userRegistration="+userId+" order by e.employmentId"; 
 		Query qry=em.createQuery(str);
 		
-		List<Employment> employmentList=qry.getResultList();
+		List<Employment> employmentList=qry.getResultList(); 
+		if(employmentList.size()==0)
+		{ 
+			Employment e=new Employment(); 
+			System.out.println(e);
+			 return e;
+		} 
 	
-		Employment updatedEmploymentDetails=employmentList.get(employmentList.size()-1);
+		Employment updatedEmploymentDetails=employmentList.get(employmentList.size()-1); 
+		System.out.println(updatedEmploymentDetails);
 		
 		return updatedEmploymentDetails;
 	}

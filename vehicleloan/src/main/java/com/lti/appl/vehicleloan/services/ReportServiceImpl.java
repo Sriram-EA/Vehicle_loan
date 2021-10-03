@@ -1,8 +1,11 @@
 package com.lti.appl.vehicleloan.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lti.appl.vehicleloan.beans.ApplicationForm;
 import com.lti.appl.vehicleloan.beans.Report;
 import com.lti.appl.vehicleloan.dao.ReportDao;
 
@@ -18,6 +21,8 @@ public class ReportServiceImpl implements ReportService {
 		System.out.println("inside service");
 		return reportDao.getReport(applicationId);
 		
-	}
+	} 
+	
+
 
 }
