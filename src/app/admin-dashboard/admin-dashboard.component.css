@@ -131,3 +131,14 @@ input.btn.btn-primary {
     width: 82%;
     margin-top: 1%;
   } 
+  .para {
+    background: aliceblue;
+  }
+  h1#admin {
+    background-color: aliceblue;
+    margin: unset;
+}
+
+p.m-0.text-center.text-dark {
+  float: left;
+}

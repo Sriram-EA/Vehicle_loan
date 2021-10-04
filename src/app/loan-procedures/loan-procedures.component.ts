@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-dashboard',
-  templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  selector: 'app-loan-procedures',
+  templateUrl: './loan-procedures.component.html',
+  styleUrls: ['./loan-procedures.component.css']
 })
-export class AdminDashboardComponent implements OnInit {
+export class LoanProceduresComponent implements OnInit {
 
   constructor(private router:Router) { }
 
   ngOnInit(): void {
   } 
   onLogout():void
-  {   
+  {  
     if(confirm("You have been logged out Successfully"))
     { 
       if(localStorage.getItem("userID")!=null){									
@@ -34,8 +34,6 @@ export class AdminDashboardComponent implements OnInit {
         this.router.navigate(['home']);
     
       }
-
-    }
-   
+  }
 
 }

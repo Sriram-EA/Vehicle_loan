@@ -76,3 +76,6 @@ label
 label {
     color: black;
 }
+p.m-0.text-center.text-dark {
+    float: left;
+  }

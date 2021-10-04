@@ -1,14 +1,16 @@
 <div class="wrapper">
     <div class="sidebar">
         <h6> <i class="fas fa-home"></i><a [routerLink]="['/user-dashboard']"> User Dashboard</a> </h6>
-        <ul>
-            <li><a [routerLink]="['/addemp']"> <i class="fa fa-book fa-fw"></i> Add/Update your Employment Details</a></li>
+        <ul> 
+            <li><a class="bankdetails" [routerLink]="['/loanprocedures']"><i class="far fa-address-book"></i>Loan
+                Procedures<br> </a></li>
+            <li><a [routerLink]="['/addemp']"> <i class="fa fa-book fa-fw"></i> Add/Update your Employment Details</a>
+            </li>
             <li><a class="appstatus" [routerLink]="['/status']"><i class="fas fa-user"></i>Application Status </a></li>
             <li><a [routerLink]="['/addbank']"><i class="fas fa-briefcase"></i> Add Bank Details</a></li>
-            <li><a class="bankdetails" [routerLink]="['/updatebank']"><i class="far fa-address-book"></i>  Update Bank
-                    Details<br> </a></li>
             <li><a [routerLink]="['/vehicletypes']"><i class="fas fa-chart-line"></i>Apply Loan</a></li>
-            <li><a class="bankdetails" [routerLink]="['/aboutus']"><i class="fas fa-address-book"></i>About us</a></li>
+            <li><a class="bankdetails" [routerLink]="['/aboutus']"><i class="fas fa-address-book"></i>About us</a></li> 
+            <li><a class="bankdetails" [routerLink]="['/home']" (click)="onLogout()"><i class="fas fa-sign-out-alt" ></i>Log Out</a></li>
         </ul>
     </div>
 </div>
@@ -24,3 +26,9 @@
         <tr><a [routerLink]="['/user-dashboard']" class="btn btn-warning"  routerLinkActive="active">Back To User Dashboard </a></tr>
     </tbody>
 </table>
+
+&nbsp;
+
+<footer class="py-5" style="background-color: #e0e3e6;position: relative;margin-top:3%;">
+    <div class="container"><p class="m-0 text-center text-dark">Copyright &copy; WheelEx 2021</p></div>
+</footer>

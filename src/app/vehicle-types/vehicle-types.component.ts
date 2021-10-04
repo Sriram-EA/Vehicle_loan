@@ -46,6 +46,31 @@ export class VehicleTypesComponent implements OnInit {
        alert("Please Fill your Bank Details and Employment Details");
     }
 
-  }
+  } 
+  onLogout():void
+  {   
+    if(confirm("You have been logged out Successfully"))
+    { 
+      if(localStorage.getItem("userID")!=null){									
+        localStorage.removeItem("userID");
+        }  
+        if(localStorage.getItem("employmentId")!=null)
+        {
+          localStorage.removeItem("employmentId");
+        } 
+        if(localStorage.getItem("bankId")!=null)
+        {
+          localStorage.removeItem("bankId");
+        } 
+        if(localStorage.getItem("vehicleId")!=null)
+        {
+          localStorage.removeItem("vehicleId");
+        }
+        this.router.navigate(['home']);
+    
+      }
+
+    }
+   
 
 }

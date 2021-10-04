@@ -108,3 +108,10 @@ h5.card-title {
 input.btn.btn-primary {
   padding: 1%;
 }
+i.far.fa-address-book {
+  color: unset;
+  margin: 4px;
+}
+p.m-0.text-center.text-dark {
+  float: left;
+}

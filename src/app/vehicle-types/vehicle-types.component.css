@@ -133,3 +133,10 @@ input.btn.btn-primary {
 table.table.center {
     width: -webkit-fill-available;
 }
+i.far.fa-address-book {
+  color: unset;
+  margin: 4px;
+}
+p.m-0.text-center.text-dark {
+  float: left;
+}

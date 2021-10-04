@@ -32,15 +32,14 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
 
-    this.userService.getUserList()
-      .subscribe(
-        data => {
-          this.userList = data;
-        }
-      )
+    // this.userService.getUserList()
+    //   .subscribe(
+    //     data => {
+    //       this.userList = data;
+    //     }
+    //   )
   }
 
-  //this.formname.reset(); 
 
   onSubmit() {
     this.submitted = true;

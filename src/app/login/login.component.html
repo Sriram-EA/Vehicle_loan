@@ -18,7 +18,7 @@
       <div class="form-group">
               <label for="password">Password </label>
               <input type="password" formControlName="password" placeholder="password" name="password" class="form-control" id="password" required>
-              <div *ngIf="submitted && addForm.controls.password.errors" class="danger">
+              <div *ngIf="submitted && addForm.controls.password.errors" class="danger"> Password minimum Length is 5
             <div class="text-danger" *ngIf="addForm.controls.password.errors.required">Password is required
           </div>
                   </div>
@@ -31,3 +31,9 @@
 
   </form>
 </div>
+
+&nbsp;
+
+<footer class="py-5" style="background-color: #e0e3e6; margin-top: 1%;">
+  <div class="container"><p class="m-0 text-center text-dark">Copyright &copy; WheelEx 2021</p></div>
+</footer>

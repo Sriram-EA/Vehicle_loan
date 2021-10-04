@@ -1,3 +1,7 @@
 img{
     position:relative
 }
+div#carousel-example-2 {
+    width: 75%;
+    margin-left: 12%;
+}

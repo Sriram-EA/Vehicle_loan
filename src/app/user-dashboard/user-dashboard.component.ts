@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AddbankService } from '../services/addbank.service';
 import { EmploymentDetailsService } from '../services/employment-details.service';
 
@@ -11,8 +12,9 @@ export class UserDashboardComponent implements OnInit {
 
   userID: number = Number(localStorage.getItem("userID"));
   employmentId: number;
-  bankId: any;
-  constructor(private addBankService: AddbankService, private employmentService: EmploymentDetailsService) { }
+  bankId: any; 
+
+  constructor(private addBankService: AddbankService, private employmentService: EmploymentDetailsService,private router:Router) { }
 
   ngOnInit(): void {
     this.addBankService.getBankIdByUserId(this.userID)
@@ -41,7 +43,28 @@ export class UserDashboardComponent implements OnInit {
           }
         }
       );
-
+  } 
+  onLogout():void
+  {  
+    if(confirm("You have been logged out Successfully"))
+    { 
+      if(localStorage.getItem("userID")!=null){									
+        localStorage.removeItem("userID");
+        }  
+        if(localStorage.getItem("employmentId")!=null)
+        {
+          localStorage.removeItem("employmentId");
+        } 
+        if(localStorage.getItem("bankId")!=null)
+        {
+          localStorage.removeItem("bankId");
+        } 
+        if(localStorage.getItem("vehicleId")!=null)
+        {
+          localStorage.removeItem("vehicleId");
+        }
+        this.router.navigate(['home']);
+    
+      }
   }
-
 }

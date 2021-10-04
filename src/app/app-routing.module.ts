@@ -14,6 +14,7 @@ import { EmicalculatorComponent } from './emicalculator/emicalculator.component'
 import { FourWheelerEligibilityCheckerComponent } from './four-wheeler-eligibility-checker/four-wheeler-eligibility-checker.component';
 import { HomeComponent } from './home/home.component';
 import { LoanDetailsComponent } from './loan-details/loan-details.component';
+import { LoanProceduresComponent } from './loan-procedures/loan-procedures.component';
 import { LoginComponent } from './login/login.component';
 import { StatusComponent } from './status/status.component';
 import { ThreeWheelerEligibilityCheckerComponent } from './three-wheeler-eligibility-checker/three-wheeler-eligibility-checker.component';
@@ -48,7 +49,8 @@ const routes: Routes = [
   {path:'fourwheelereligibilitychecker',component:FourWheelerEligibilityCheckerComponent},
   {path:'applicationform',component:AppformComponent},
   {path:'approvedlist',component:ApprovedListComponent},
-  {path:'rejectedlist',component:RejectedListComponent}
+  {path:'rejectedlist',component:RejectedListComponent},
+  {path:'loanprocedures',component:LoanProceduresComponent}
 ];
 
 @NgModule({
