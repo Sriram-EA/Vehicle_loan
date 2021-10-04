@@ -15,5 +15,6 @@ public interface UserRegistrationService {
 	public abstract int getUserAdminStatus(String email); 
 	public abstract int getUserId(String email); 
 	public abstract String getUserNameById(int userId); 
-	public abstract boolean checkEmailExists(String email);
+	public abstract boolean checkEmailExists(String email); 
+	public abstract boolean resetPassword(String emailId, String password);
 }

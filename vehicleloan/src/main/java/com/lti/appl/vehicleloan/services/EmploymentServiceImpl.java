@@ -1,6 +1,7 @@
 package com.lti.appl.vehicleloan.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,14 +65,22 @@ public class EmploymentServiceImpl implements EmploymentService {
 	public String updateEmployment(Employment e, int userId) {
 		String msg =  employmentDao.updateEmployment(e, userId);
 		return msg;
-	}
+	} 
 	
+	// Getting Employment Details by userId
 	@Override
 	public Employment getEmploymentByUserId(int userId) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
+	Employment employmentDetails= employmentDao.getEmploymentByUserId(userId);
+		
+		if(employmentDetails==null)
+		{
+			throw new NoSuchElementException();
+		}
+		
+		return employmentDetails;
 		
 		
-		return employmentDao.getEmploymentByUserId(userId);
 	}
 
 }

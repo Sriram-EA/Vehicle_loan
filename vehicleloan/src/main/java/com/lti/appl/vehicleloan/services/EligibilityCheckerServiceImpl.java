@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lti.appl.vehicleloan.beans.EligibilityChecker;
+import com.lti.appl.vehicleloan.exception.EmptyInputException;
 
 
 @Service
@@ -11,10 +12,17 @@ public class EligibilityCheckerServiceImpl implements EligibilityCheckerService 
 
 	
 	
-	
 	@Override
 	public EligibilityChecker checkEligibility(EligibilityChecker eligibilityInputDetails) {
-		// TODO Auto-generated method stub
+		// Checking for Empty Inputs
+		if(eligibilityInputDetails.getVehicleType().isEmpty()||eligibilityInputDetails.getVehicleId()==0||eligibilityInputDetails.getApplicantName().isEmpty()||eligibilityInputDetails.getShowRoomPrice()==0||eligibilityInputDetails.getOnRoadPrice()==0||eligibilityInputDetails.getGender().isEmpty()||eligibilityInputDetails.getAge()==0||eligibilityInputDetails.getTypeOfEmployment().isEmpty()||eligibilityInputDetails.getAnnualIncome()==0)
+		{
+			
+		throw new EmptyInputException();
+			
+		}
+		
+		// Checking Eligibility Status of 2 Wheeler Vehicles
 		if(eligibilityInputDetails.getVehicleType().equals("2W"))
 		{
 			
@@ -51,7 +59,8 @@ public class EligibilityCheckerServiceImpl implements EligibilityCheckerService 
 				}
 				}
 			
-		}
+		} 
+		// Checking Eligibility Status of 3 Wheeler Vehicles
 		else if(eligibilityInputDetails.getVehicleType().equals("3W"))
 			{
 				
@@ -91,7 +100,8 @@ public class EligibilityCheckerServiceImpl implements EligibilityCheckerService 
 				
 				}
 				
-			}
+			} 
+		// Checking Eligibility Status of 4 Wheeler Vehicles
 		else if(eligibilityInputDetails.getVehicleType().equals("4W"))
 			{
 

@@ -1,6 +1,7 @@
 package com.lti.appl.vehicleloan.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,12 +88,15 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		int userId=userRegistrationDao.getUserId(email);
 		return userId;
 	} 
-	
+	// Getting User Name by  User Id
 	@Override
 	public String getUserNameById(int userId) {
-		// TODO Auto-generated method stub
+	String userName=userRegistrationDao.getUserNameById(userId);
 		
-		String userName=userRegistrationDao.getUserNameById(userId);
+		if(userName.isEmpty())
+		{	
+			throw new NoSuchElementException();	
+		}
 		
 		return userName;
 	}
@@ -102,6 +106,12 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	public boolean checkEmailExists(String email) {
 		boolean status=userRegistrationDao.checkEmailExists(email);
 		return status;
+	} 
+	@Override
+	public boolean resetPassword(String emailId, String password) {
+		
+		boolean s=userRegistrationDao.resetPassword(emailId,password);
+		return s;
 	}
 
 }

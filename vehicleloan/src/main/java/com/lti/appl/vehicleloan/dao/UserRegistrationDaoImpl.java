@@ -156,6 +156,23 @@ public class UserRegistrationDaoImpl implements UserRegistrationDao{
 			} 
 		}
 		return status;
+	} 
+	
+	@Transactional
+	@Override
+	public boolean resetPassword(String emailId,String password) {
+			
+		String updateString="update UserRegistration set password=:password where emailId=:emailId";
+		
+		Query qry=em.createQuery(updateString);
+		
+		qry.setParameter("emailId",emailId);
+		qry.setParameter("password",password);
+		int i=qry.executeUpdate();
+		if(i==1)
+		return true;
+		return false;
+		
 	}
 
 }

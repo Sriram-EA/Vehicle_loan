@@ -1,6 +1,7 @@
 package com.lti.appl.vehicleloan.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,11 +23,16 @@ public class VehicleServiceImpl implements VehicleService{
 		List<Vehicle> vehicleList = vehicleDao.getAllVehicles();
 		return vehicleList;
 	}
-
+    
+	//Getting Vehicle Details by Vehicle Id
 	@Override
 	public Vehicle getVehicleById(int vehicleId) {
 		
 		Vehicle vehicleDetail=vehicleDao.getVehicleById(vehicleId);
+		if(vehicleDetail==null)
+		{
+			throw new NoSuchElementException();
+		}
 		return vehicleDetail;
 	} 
 	

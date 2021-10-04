@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -65,13 +66,7 @@ public class UserRegistrationController {
 		return userRegisterMessage;
 	}
 
-//	//http://localhost:8090/userregistration/addDetails
-//	@PostMapping("/adduser")
-//	public void addPersonalDetails(@RequestBody UserRegistration e) 
-//	{
-//		System.out.println("insde cotroller "+e);
-//		userRegistrationService.createUser(e);
-//	} 
+
 	//http://localhost:8090/userregistration/sriram@gmail.com/sriram123
 	@GetMapping("/validateuser/{email}/{password}")
 	public boolean validateEmail(@PathVariable(name ="email") String email, @PathVariable(name="password") String password)
@@ -112,6 +107,13 @@ public class UserRegistrationController {
 	{
 		boolean status=userRegistrationService.checkEmailExists(email); 
 		System.out.println("Email Exists status"+ status);
+		return status;
+	}
+	
+	@PutMapping("/reset/{id}/{password}") 
+	public boolean resetPassword(@PathVariable(value="id") String emailId,@PathVariable(value="password") String password)
+	{
+		boolean status=userRegistrationService.resetPassword(emailId, password);
 		return status;
 	}
 }

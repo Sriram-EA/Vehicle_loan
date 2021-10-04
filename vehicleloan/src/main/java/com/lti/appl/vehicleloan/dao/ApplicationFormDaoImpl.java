@@ -1,7 +1,8 @@
 package com.lti.appl.vehicleloan.dao;
 
 import java.util.Calendar;
-import java.util.List;
+import java.util.List; 
+import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -147,10 +148,15 @@ public class ApplicationFormDaoImpl implements ApplicationFormDao {
 			Query emiQry=em.createQuery(emi);
 			ApplicationForm a=(ApplicationForm) emiQry.getSingleResult(); 
 			int emiId=a.getEmi().getEmiId();
-			
+			int tenure=a.getEmi().getTenure();
 			EmiDetail emiDetail=em.find(EmiDetail.class,emiId);
 			emiDetail.setEmiStartDate(date); 
-			em.merge(emiDetail);
+			
+			LocalDate ld = date.toLocalDate(); 
+			LocalDate monthLater = ld.plusMonths(tenure); 
+			java.sql.Date sqlDate = java.sql.Date.valueOf(monthLater); 
+			emiDetail.setEmiEndDate(sqlDate);
+            em.merge(emiDetail);			
 			
 			if(i==1 && j==1)
 			return true;
