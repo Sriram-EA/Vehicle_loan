@@ -1,53 +1,55 @@
 <div>
     <h2 class="header">Application Form</h2>
-<br>
+    <br>
 
-<div class="card border-primary mb-3" style="max-width: 57rem; ">
+    <div class="card border-primary mb-3" style="max-width: 57rem; ">
 
 
-    <div class="card-body text-primary">
-        <h5 class="card-title">Personal Details</h5>
-        <hr>
-        <form [formGroup]="appForm" (ngSubmit)="onSubmit(appForm.value)">
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">First Name</label>
-                <div class="col-sm-10">
-                    <input class="form-control" placeholder="First Name" formControlName="firstName"
-                        value="{{firstName}}">
+        <div class="card-body text-primary">
+            <h5 class="card-title">Personal Details</h5>
+            <hr>
+            <form [formGroup]="appForm" (ngSubmit)="onSubmit(appForm.value)" ngNativeValidate>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">First Name</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" placeholder="First Name" formControlName="firstName"
+                            value="{{firstName}}">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Last Name</label>
-                <div class="col-sm-10">
-                    <input class="form-control" placeholder="Last Name" formControlName="lastName" value="{{lastName}}">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Last Name</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" placeholder="Last Name" formControlName="lastName"
+                            value="{{lastName}}">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Age</label>
-                <div class="col-sm-10">
-                    <input class="form-control" placeholder="Age" formControlName="age">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Age</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" placeholder="Age" formControlName="age" required>
 
+                    </div>
                 </div>
-            </div>
-            <div>
-                <label class="col-sm-2 col-form-label" id="genderLabel">Gender</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" value="Male" formControlName="gender">
-                    <label class="form-check-label" for="inlineRadio1">Male</label>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Gender</label>
+
+                    <div class="col-sm-10"> <select class="form-control" placeholder="Gender" formControlName="gender"
+                            required>
+                            <option value="" disabled>Choose your Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+
+                        </select></div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" value="Female" formControlName="gender">
-                    <label class="form-check-label" for="inlineRadio2">Female</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" value="Others" formControlName="gender">
-                    <label class="form-check-label" for="inlineRadio3">Others</label>
-                </div>
+
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Mobile Number</label>
                     <div class="col-sm-10">
-                        <input class="form-control" placeholder="Mobile Number" formControlName="mobileNumber">
+                        <input class="form-control" placeholder="Mobile Number" formControlName="mobileNumber" required>
                     </div>
                 </div>
 
@@ -62,25 +64,25 @@
                     <label class="col-sm-2 col-form-label">Address</label>
                     <div class="col-sm-10">
                         <textarea class="form-control" rows="4" cols="50" placeholder="Address"
-                            formControlName="address"></textarea>
+                            formControlName="address" required></textarea>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">State</label>
                     <div class="col-sm-10">
-                        <input class="form-control" placeholder="State" formControlName="state">
+                        <input class="form-control" placeholder="State" formControlName="state" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">City</label>
                     <div class="col-sm-10">
-                        <input class="form-control" placeholder="City" formControlName="city">
+                        <input class="form-control" placeholder="City" formControlName="city" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Pincode</label>
                     <div class="col-sm-10">
-                        <input class="form-control" placeholder="Pincode" formControlName="pinCode">
+                        <input class="form-control" placeholder="Pincode" formControlName="pinCode" required>
                     </div>
                 </div>
                 <hr>
@@ -213,14 +215,16 @@
                 <button type="submit" style="float: right;width:100px;">Submit</button>
 
 
-            </div>
-        </form>
 
+            </form>
+
+        </div>
     </div>
-</div>
 
     &nbsp;
 
-<footer class="py-5" style="background-color: #e0e3e6;position: relative;margin-top:2%;">
-    <div class="container"><p class="m-0 text-center text-dark">Copyright &copy; WheelEx 2021</p></div>
-</footer>
+    <footer class="py-5" style="background-color: #e0e3e6;position: relative;margin-top:2%;">
+        <div class="container">
+            <p class="m-0 text-center text-dark">Copyright &copy; WheelEx 2021</p>
+        </div>
+    </footer>

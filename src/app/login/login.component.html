@@ -2,7 +2,7 @@
 <div class="col-md-6 col-md-offset-2">
     <h2 class="signup">Login</h2>
     <br />
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">  
+    <form [formGroup]="addForm">  
     <div class="center">
       <div *ngIf="error1display">{{error1}}</div> 
       <div *ngIf="error2display">{{error2}}</div>
@@ -23,7 +23,8 @@
           </div>
                   </div>
             </div> 
-          <button class="btn btn-success">Login</button>&nbsp; &nbsp;
+          <button class="btn btn-success" (click)="onSubmit()">Login</button>&nbsp; &nbsp; 
+          <a [routerLink]="['/resetpassword']" class="btn-danger">Forgot Password. ?</a>
       <div class="form-group">
       </div>
     </div>

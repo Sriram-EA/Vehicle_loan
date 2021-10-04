@@ -1,12 +1,8 @@
-
-<nav class="navbar navbar-expand-lg bg-custom"> 
+<nav class="navbar navbar-expand-lg bg-custom">
     <img class="navbar-brand" [routerLink]="['/home']" src="assets/images/vehicle_logo.JPG" width=70 height=60>
     <a class="navbar-brand" [routerLink]="['/home']">WheelEx</a>
-    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button> -->
-    
+
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto bg-custom">
             <li class="nav-item">
@@ -17,19 +13,16 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/emicalculator']">EMI Calculator</a>
-            </li> 
+            </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/userregistration']">Apply Loan</a>
+                <a class="nav-link" [routerLink]="['/userregistration']">Sign Up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/login']">Login</a>
             </li>
         </ul>
     </div>
-</nav>   
+</nav>
 <div>
-        <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </div>
-
-
-

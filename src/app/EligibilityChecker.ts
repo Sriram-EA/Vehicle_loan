@@ -12,7 +12,7 @@ export class EligibilityChecker {
     annualIncome: number = 0;
     existingEmi: number = 0;
 
-    eligibilityStatus: string = ""
+    eligibilityStatus: string = "";
 
 
 }

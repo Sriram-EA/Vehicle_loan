@@ -29,6 +29,7 @@ import { RejectedListComponent } from './admin-dashboard/rejected-list/rejected-
 import { GlobalHttpInterceptorService } from './services/global-http-interceptor.service';
 import { GlobalErrorHandlerService } from './services/global-error-handler-service.service';
 import { LoanProceduresComponent } from './loan-procedures/loan-procedures.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 
@@ -60,6 +61,7 @@ import { LoanProceduresComponent } from './loan-procedures/loan-procedures.compo
     ApprovedListComponent,
     RejectedListComponent,
     LoanProceduresComponent,
+    ResetpasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EligibilityChecker } from '../EligibilityChecker';
 import { LoanEmiDetails } from '../LoanEmiDetails';
 import { AddappService } from '../services/addapp.service';
 import { EligibilityCheckerService } from '../services/eligibility-checker.service';
 import { FetchdetailsService } from '../services/fetchdetails.service';
+import { Vehicle } from '../Vehicle';
 
 @Component({
   selector: 'app-appform',
@@ -29,12 +31,15 @@ export class AppformComponent implements OnInit {
   accountType: string;
   principle: number;
   tenure: number;
-  emi: number;
+  emi: number; 
+  age:number;
+  gender:string;
   userID: number = Number(localStorage.getItem("userID"));
   vehicleId: number = Number(localStorage.getItem("vehicleId"));
   employmentId: number = Number(localStorage.getItem("employmentId"));
   bankId: number = Number(localStorage.getItem("bankId"));
-  emiObject: LoanEmiDetails;
+  emiObject: LoanEmiDetails; 
+  eligibilityObject:EligibilityChecker;
 
   constructor(private fb: FormBuilder, private router: Router, private addapp: AddappService, private f: FetchdetailsService, private eligibilityService: EligibilityCheckerService) { }
   ngOnInit(): void {
@@ -46,7 +51,7 @@ export class AppformComponent implements OnInit {
       bankId: [],
       firstName: [{ value: '', disabled: true },],
       lastName: [{ value: '', disabled: true },],
-      age: ['', Validators.required],
+      age: [''],
       gender: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       mailId: [{ value: '', disabled: true },],
@@ -69,11 +74,14 @@ export class AppformComponent implements OnInit {
     });
   }
   fetchservice() {
-
+ 
+    this.eligibilityObject=this.eligibilityService.getEligibilityDetails();
+    this.age=this.eligibilityObject.age; 
+    console.log("Age in app form ",this.age);
     this.emiObject = this.eligibilityService.getLoanEmiDetails();
     console.log(this.emiObject.principle);
     console.log(this.emiObject.tenure);
-    console.log(this.emiObject.emi);
+    console.log(this.emiObject.emi); 
 
     console.log("Inside add Application Service");                    // principle, tenure, emi
     this.f.fetch(this.vehicleId, this.employmentId, this.userID, this.bankId, Number(this.emiObject.principle), Number(this.emiObject.tenure), Number(this.emiObject.emi))

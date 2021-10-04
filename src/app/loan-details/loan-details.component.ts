@@ -49,7 +49,8 @@ export class LoanDetailsComponent implements OnInit {
       principle: ['', Validators.required],
       tenure: ['', Validators.required],
       emiAmount: ['', Validators.required]
-    });
+    }); 
+
 
     this.vehicleEligibility = this.eligibilityCheckerService.getEligibilityDetails();
     this.vehicle = this.eligibilityCheckerService.getVehicleDetails();
@@ -64,8 +65,16 @@ export class LoanDetailsComponent implements OnInit {
     this.principleRangeCalculation();
 
   }
+  public onTenureSelect()
+{
+
+this.tenureForEmiCalculation=this.loanForm.get('tenure')?.value;
+
+
+}
 
   public change() {
+    this.principle=this.loanForm.get('principle')?.value;
     
     if(!(this.loanForm.value.principle>=this.minimumPrincipleAmount&&this.loanForm.value.principle<=this.maximumPrincipleAmount))
     {

@@ -21,34 +21,37 @@
     <div class="card-body text-primary">
       <h5 class="card-title">Bank Details</h5>
       <hr>
-      <form [formGroup]="addbankForm" (ngSubmit)="onSubmit(addbankForm.value)" >
+      <form [formGroup]="addbankForm" (ngSubmit)="onSubmit(addbankForm.value)" ngNativeValidate>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Account Number</label>
             <div class="col-sm-10">
-              <input  class="form-control"  placeholder="Account Number" formControlName="accountNumber" >
+              <input  class="form-control"  placeholder="Account Number" formControlName="accountNumber" required > 
+              
             </div>
           </div>
           <div class="form-group row">
               <label class="col-sm-2 col-form-label">IFSC Code</label>
               <div class="col-sm-10">
-                <input  class="form-control"  placeholder="IFSC Code" formControlName="ifscCode" >
+                <input  class="form-control"  placeholder="IFSC Code" formControlName="ifscCode" required> 
+               
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Bank Branch</label>
               <div class="col-sm-10">
-                <input  class="form-control"  placeholder="Bank Branch" formControlName="bankBranch" >
+                <input  class="form-control"  placeholder="Bank Branch" formControlName="bankBranch" required > 
+                
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Account Type</label> 
               
-              <div class="col-sm-10"> <select class="form-control"  placeholder="Account Type" formControlName="accountType">
+              <div class="col-sm-10"> <select class="form-control"  placeholder="Account Type" formControlName="accountType" required>
                 <option value="" disabled>Choose your Account Type</option>
                 <option value="SALARY" >SALARY</option>
               <option value="SAVINGS" >SAVINGS</option>
               
-           </select></div>
+           </select></div> 
           </div>
             <input class="btn btn-primary" type="submit" value="Submit" style="float: right;width:100px;">
                               

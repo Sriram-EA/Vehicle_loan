@@ -5,7 +5,7 @@ export class Vehicle {
     vehicleModel: String = "";
     showroomPrice: number = 0;
     onroadPrice: number = 0;
-    interest: number = 0;
+    interest: number = 0; 
 
 }
 // vehicleId:number=0;

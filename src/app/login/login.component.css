@@ -70,4 +70,15 @@ label
 .center
 {
     margin-left:35%;
+} 
+a.btn-danger {
+    padding: 8px;
+    margin-bottom: 15px;
+    text-decoration: none;
+} 
+
+button.btn.btn-success {
+    margin-top: 6%;
+    margin-left: -8%;
+    margin-right: 4%;
 }

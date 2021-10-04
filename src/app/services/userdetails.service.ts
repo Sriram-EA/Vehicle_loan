@@ -57,15 +57,11 @@ export class UserdetailsService {
     return this.http.get<boolean>(this.baseUrl+'/checkemaillogin/'+email);
   }
 
-  
-
-
-  // public checkEmail(userRegistration:UserRegistration)
-  // {
-  //   const headers={'content-type':'application/json'}; 
-  //   const body=JSON.stringify(UserRegistration);
-  //   return this.http.post<string>(this.baseUrl+'/checkemail',body,{'headers':headers}); 
-  // }
+  public resetPassword(emailId:string,password:string)
+  {
+    const body={title: 'Angular PUT Request'};
+    return this.http.put<boolean>(this.baseUrl+'/reset/'+emailId+'/'+password,body);
+  }
 
 
 }

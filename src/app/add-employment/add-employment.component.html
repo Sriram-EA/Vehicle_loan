@@ -19,11 +19,11 @@
     <div class="card-body text-primary">
         <h5 class="card-title">Employment Details</h5>
         <hr>
-        <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm.value)">
+        <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm.value)" ngNativeValidate>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Employment Type</label> 
                 
-                <div class="col-sm-10"> <select class="form-control"  placeholder="Employment Type" formControlName="employmentType">
+                <div class="col-sm-10"> <select class="form-control"  placeholder="Employment Type" formControlName="employmentType" required>
                   <option value="" disabled>Choose your Employment Type</option>
                   <option value="Private">Private</option>
                     <option value="Entrepreneur">Entrepreneur</option> 
@@ -35,7 +35,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Annual Salary</label>
                 <div class="col-sm-10">
-                    <input class="form-control" placeholder="Annual Salary" formControlName="annualSalary">
+                    <input class="form-control" placeholder="Annual Salary" formControlName="annualSalary" required>
                 </div>
             </div>
 

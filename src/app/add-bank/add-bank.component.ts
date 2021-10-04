@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddbankService } from '../services/addbank.service';
 
@@ -12,22 +12,24 @@ export class AddBankComponent implements OnInit {
 
   addbankForm: FormGroup;
   userId: number;
-  bankId: number;
+  bankId: number; 
+  submitted:boolean;
   constructor(private fb: FormBuilder, private addempService: AddbankService, private router: Router, private addBankService: AddbankService) { }
   ngOnInit(): void {
 
     this.userId = Number(localStorage.getItem("userID"));
     this.addbankForm = this.fb.group({
       bankId: [],
-      accountNumber: [''],
-      ifscCode: [''],
-      bankBranch: [''],
-      accountType: [''],
+      accountNumber: ['',Validators.required],
+      ifscCode: ['',Validators.required],
+      bankBranch: ['',Validators.required],
+      accountType: ['',Validators.required],
       userID: [],
     });
   }
   onSubmit(value: string) {
-    //localstorage
+    //localstorage 
+    this.submitted = true;
     console.log("Component", value);
     this.addempService.addBankById(this.addbankForm.value, this.userId)
       .subscribe(

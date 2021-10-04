@@ -28,7 +28,7 @@
 
   <div class="form-group">
     <label for="exampleFormControlSelect1"> <b> <span style="color:#000000"> Tenure(Select Number of Months) </span> </b></label>
-    <select  formControlName="tenure" class="form-control" id="formSelecttenureId" name="tenureInput"  [(ngModel)]="tenureForEmiCalculation">
+    <select  formControlName="tenure" class="form-control" id="formSelecttenureId" name="tenureInput"  (change)="onTenureSelect()">
 
       <option value="" >Select Number of Months </option>
       <option value="6">6</option>
@@ -56,9 +56,10 @@
   <small *ngIf="tenureForEmiCalculation!=0" class="text-danger">Priciple Amount Range(min:{{minimumPrincipleAmount}}-max:{{maximumPrincipleAmount}})</small>
   <div class="form-group">
     <label for="exampleFormControlInput10"><b><span style="color:#000000">Principle</span></b></label>
-    <input formControlName="principle" type="text" class="form-control" id="formEmiAmountId" value="" [(ngModel)]="principle" (change)="change()">
+    <input formControlName="principle" type="text" class="form-control" id="formEmiAmountId" value=""  (change)="change()">
   </div>
-<small *ngIf="principle==0" class="text-danger">Please enter principle amount</small>
+<small *ngIf="principle==0" class="text-danger">Please enter principle amount</small> 
+<small *ngIf="principleRangeError" class="text-danger">Principle Amount between {{minimumPrincipleAmount}}-{{maximumPrincipleAmount}} is only allowed</small>
 
   <div class="form-group">
     <label for="exampleFormControlInput10"><b><span style="color:#000000">EMI</span></b></label>

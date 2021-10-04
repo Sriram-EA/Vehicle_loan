@@ -16,7 +16,7 @@ export class UserregistrationComponent implements OnInit {
   submitted: boolean = false;
   emailField: string;
   emailMessage: boolean;
-  status: boolean;
+  status: boolean; 
 
   constructor(private userService: UserdetailsService, private fb: FormBuilder, private router: Router,) {
   } 
@@ -26,12 +26,18 @@ export class UserregistrationComponent implements OnInit {
      
     this.addForm = this.fb.group({
       userID: [],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', [Validators.required,Validators.pattern("[a-zA-Z][a-zA-Z ]+")]],
+      lastName: ['', [Validators.required,Validators.pattern("[a-zA-Z][a-zA-Z ]+")]],
       emailId: ['', Validators.required],
       password: ['', Validators.required]
 
-    });
+    }); 
+
+    // this.addForm= new FormGroup({  
+    //   firstName: new FormControl('',[Validators.required, Validators.pattern("^[a-zA-Z]+$")]),
+    // lastName: new FormControl('',[Validators.required, Validators.pattern("^[a-zA-Z]+$")])
+
+    // });
   }
   emailDisplay: boolean = false;
   registrationDisplay: boolean;

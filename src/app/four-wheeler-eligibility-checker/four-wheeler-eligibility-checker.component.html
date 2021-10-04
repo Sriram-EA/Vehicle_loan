@@ -70,7 +70,7 @@
     <input formControlName="annualIncome" type="text" class="form-control" id="formIncomeId" value={{annualIncome}} [readonly]="readonly">
   </div>
   <div class="form-group">
-    <label for="exampleFormControlInput10">EMI</label>
+    <label for="exampleFormControlInput10">Existing EMI</label>
     <input formControlName="existingEmi" type="text" class="form-control" id="formEmiId" value={{existingEmiAmount}} [readonly]="readonly">
   </div>
   <div class="form-group" *ngIf="eligibilityStatus=='Eligible'">

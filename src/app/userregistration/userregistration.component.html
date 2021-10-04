@@ -2,19 +2,19 @@
 <div class="col-md-6 col-md-offset-2">
       <h2 class="signup">Sign Up</h2> 
       <br /> 
-      <h6 *ngIf="emailDisplay" class="center"> Email Already Exists </h6> 
+      <h6 *ngIf="emailDisplay" class="emailexists"> Email Already Exists </h6> 
       <h6  *ngIf="registrationDisplay" class="center">Registered Successfully</h6> 
       <form [formGroup]="addForm">
         <div class="center"> 
             <div class="form-group">
-                <!-- <a class="btn btn-navg" [routerLink]="['/login']">Already have an account. ? Login Here</a> -->
+                 <a class="btn btn-navg" [routerLink]="['/login']"> Already have an account. ? Login Here</a> 
             </div>
     
             <div class="form-group">
                   <label for="firstName">First Name</label>
                   <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control rounded" id="firstName">
-                  <div *ngIf="submitted && addForm.controls.firstName.errors" class="alert">
-                  <h6 class="text-danger">FirstName is required</h6>
+                  <div *ngIf="submitted && addForm.controls.firstName.errors" class="alert"> 
+                  <h6 class="text-danger">FirstName is required and it is only alphabets</h6>
                   </div>
             </div>
 
@@ -23,7 +23,7 @@
                   <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control rounded" id="lastName">
                   <div *ngIf="submitted && addForm.controls.lastName.errors" class="error">
                           <h6 class="text-danger">
-                    LastName is required</h6>
+                    LastName is required and it is only alphabets</h6>
                         </div>
                 </div>
 
@@ -31,7 +31,7 @@
                   <label for="email">Email address</label>
                   <input type="email" formControlName="emailId" placeholder="Email" name="emailId" class="form-control rounded" id="emailId" [(ngModel)]="emailField">
                   <div *ngIf="submitted && addForm.controls.emailId.errors" class="error">
-                          <h6 class="text-danger">Email is required</h6>
+                          <h6 class="text-danger" id="emailError">Email is required</h6>
                    </div>
                 </div>
 
@@ -39,7 +39,7 @@
                   <label for="password">Password </label>
                   <input type="password" formControlName="password" placeholder="password" name="password" class="form-control rounded" id="password">
                   <div *ngIf="submitted && addForm.controls.password.errors" class="error">
-                          <h6 class="text-danger">Password is required
+                          <h6 class="text-danger" id="passwordError">Password is required
                 </h6>
                         </div>
                 </div>

@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { LoanDetailsComponent } from './loan-details/loan-details.component';
 import { LoanProceduresComponent } from './loan-procedures/loan-procedures.component';
 import { LoginComponent } from './login/login.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { StatusComponent } from './status/status.component';
 import { ThreeWheelerEligibilityCheckerComponent } from './three-wheeler-eligibility-checker/three-wheeler-eligibility-checker.component';
 import { TwoWheelerEligibilityCheckerComponent } from './two-wheeler-eligibility-checker/two-wheeler-eligibility-checker.component';
@@ -50,7 +51,8 @@ const routes: Routes = [
   {path:'applicationform',component:AppformComponent},
   {path:'approvedlist',component:ApprovedListComponent},
   {path:'rejectedlist',component:RejectedListComponent},
-  {path:'loanprocedures',component:LoanProceduresComponent}
+  {path:'loanprocedures',component:LoanProceduresComponent},
+  {path:'resetpassword',component:ResetpasswordComponent}
 ];
 
 @NgModule({
